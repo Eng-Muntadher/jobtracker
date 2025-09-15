@@ -1,0 +1,15 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import "tailwindcss";
+
+:root {
+  --text-color: #0a0a0a;
+  --text-color-2: #fff;
+  --bg-color-1: #fff;
+  --bg-color-2: #030213;
+  --text-color-secondary: #717182;
+  --landing-page-section-color: #ececf0;
+  --input-color: #f3f3f5;
+}
