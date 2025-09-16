@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
+
 interface ButtonProps {
-  children?: string;
+  children?: string | ReactNode;
   onClick: () => void;
   additionalClasses?: string;
   variation: "light" | "dark";

@@ -23,6 +23,7 @@ A portfolio project for tracking a user's job applications with full Authenticat
 
 - Static homepage (fully responsive)
 - Login page (fully responsive)
+- Static applications page (fully responsive)
 
 ---
 
@@ -47,6 +48,12 @@ A portfolio project for tracking a user's job applications with full Authenticat
 ### Login Page
 
 ![Login Page Screenshot](public/assets/login.png)
+
+### Login Page
+
+![Login Page Screenshot](public/assets/applications.png)
+
+---
 
 ## Running Locally
 

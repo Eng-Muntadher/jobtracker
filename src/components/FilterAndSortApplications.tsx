@@ -51,7 +51,7 @@ function FilterAndSortApplications() {
     >
       <div className="p-6 mx-4 border border-[rgba(0,0,0,0.1)] bg-(--bg-color-1) rounded-[0.875rem]">
         <h4 className="text-(--text-color) mb-6">Filter Applications</h4>
-        <div className="flex gap-4">
+        <div className="flex gap-4 max-sm:flex-col">
           <div className="relative grow">
             <Search
               size={16}
@@ -73,7 +73,7 @@ function FilterAndSortApplications() {
               aria-haspopup="listbox"
               aria-expanded={menuIsOpen}
               ref={buttonRef}
-              className="bg-(--input-color) text-(--text-color) rounded-lg px-3 py-2 w-48 text-sm flex items-center justify-between cursor-pointer"
+              className="bg-(--input-color) text-(--text-color) rounded-lg px-3 py-2 w-48 text-sm flex items-center justify-between cursor-pointer max-sm:w-full"
               onClick={handleOpenCloseMenu}
             >
               <span>{statusFilter}</span>

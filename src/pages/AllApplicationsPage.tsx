@@ -1,5 +1,6 @@
 import AllApplicationsHeading from "../components/AllApplicationsHeading";
 import FilterAndSortApplications from "../components/FilterAndSortApplications";
+import StatusCardList from "../components/StatusCardList";
 import Table from "../components/Table";
 
 function AllApplicationsPage() {
@@ -10,6 +11,7 @@ function AllApplicationsPage() {
       <AllApplicationsHeading />
       <FilterAndSortApplications />
       <Table />
+      <StatusCardList />
     </>
   );
 }

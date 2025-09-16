@@ -12,4 +12,12 @@
   --text-color-secondary: #717182;
   --landing-page-section-color: #ececf0;
   --input-color: #f3f3f5;
+  --interviewing-status-color: #894b00;
+  --interviewing-status-bg: #fef9c2;
+  --applied-status-color: #193cb8;
+  --applied-status-bg: #dbeafe;
+  --rejected-status-color: #9f0712;
+  --rejected-status-bg: #ffe2e2;
+  --accepted-status-color: #016630;
+  --accepted-status-bg: #dcfce7;
 }
