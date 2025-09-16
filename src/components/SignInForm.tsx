@@ -65,7 +65,9 @@ function SignInForm() {
 
           <hr className="mb-4 border-t border-gray-300" />
 
-          <p className="mb-2">Don&apos;t have an account?</p>
+          <p className="mb-2 text-(--text-color-secondary)">
+            Don&apos;t have an account?
+          </p>
 
           <Button
             variation="light"
