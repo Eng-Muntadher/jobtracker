@@ -1,10 +1,12 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface ButtonProps {
   children?: string | ReactNode;
   onClick: () => void;
   additionalClasses?: string;
   variation: "light" | "dark";
+  to: string;
   accessibility?: object; ////////////////
 }
 
@@ -18,6 +20,7 @@ function Button({
   onClick,
   children,
   variation,
+  to,
 }: ButtonProps) {
   const variations: BtnVariation = {
     light:
@@ -26,12 +29,13 @@ function Button({
   };
 
   return (
-    <button
+    <Link
+      to={to}
       className={`text-center text-sm font-semibold py-2 rounded-lg border flex items-center ${variations[variation]} cursor-pointer ${additionalClasses}`}
       onClick={onClick}
     >
       {children}
-    </button>
+    </Link>
   );
 }
 

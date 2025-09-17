@@ -14,6 +14,7 @@ function SignUpForHomePage() {
         career
       </p>
       <Button
+        to="sign-in"
         variation="dark"
         onClick={() => console.log("Cta")}
         additionalClasses="px-6 py-2.5"

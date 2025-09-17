@@ -19,6 +19,7 @@ function HeroHeading() {
           className="flex gap-4 max-sm:flex-col max-sm:container"
         >
           <Button
+            to="sign-in"
             variation="dark"
             additionalClasses="px-5 py-2.5 max-sm:mx-4 justify-center"
             onClick={() => console.log("")}
@@ -27,6 +28,7 @@ function HeroHeading() {
           </Button>
 
           <Button
+            to="sign-in"
             variation="light"
             additionalClasses="px-7 py-2.5 max-sm:mx-4 justify-center"
             onClick={() => console.log("")}

@@ -3,6 +3,8 @@ import AppLayout from "./components/AppLayout";
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import AllApplicationsPage from "./pages/AllApplicationsPage";
+import Stats from "./pages/Stats";
+import AiChatbot from "./pages/AiChatbot";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: "/all-applications",
         element: <AllApplicationsPage />,
+      },
+      {
+        path: "/stats",
+        element: <Stats />,
+      },
+      {
+        path: "/ai-chatbot",
+        element: <AiChatbot />,
       },
     ],
   },
