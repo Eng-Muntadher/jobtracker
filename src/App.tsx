@@ -5,6 +5,8 @@ import SignInPage from "./pages/SignInPage";
 import AllApplicationsPage from "./pages/AllApplicationsPage";
 import Stats from "./pages/Stats";
 import AiChatbot from "./pages/AiChatbot";
+import OneApplicationPage from "./pages/OneApplicationPage";
+import AddApplicationPage from "./pages/AddApplicationPage";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "/ai-chatbot",
         element: <AiChatbot />,
+      },
+      {
+        path: "/application",
+        element: <OneApplicationPage />,
+      },
+      {
+        path: "/add-application",
+        element: <AddApplicationPage />,
       },
     ],
   },

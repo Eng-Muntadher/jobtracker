@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Input from "./Input";
 
 function SignInForm() {
   return (
@@ -24,12 +25,14 @@ function SignInForm() {
             >
               Email
             </label>
-            <input
+
+            <Input
               type="email"
               id="email"
               name="email"
-              className="mb-4 text-(--text-color-secondary) px-[0.8rem] py-2 focus:outline-none bg-(--input-color) rounded-lg w-full"
               placeholder="Enter your email"
+              required={true}
+              addedClasses="mb-4 text-(--text-color-secondary) w-full"
             />
 
             <label
@@ -38,26 +41,27 @@ function SignInForm() {
             >
               Password
             </label>
-            <input
+            <Input
               type="password"
               id="password"
               name="password"
-              placeholder="Enter your Password"
-              className="mb-4 text-(--text-color-secondary) block px-[0.8rem] py-2 focus:outline-none bg-(--input-color) rounded-lg w-full"
+              placeholder="Enter your password"
+              required={true}
+              addedClasses="mb-4 text-(--text-color-secondary) w-full"
             />
           </form>
 
           <Button
-            accessibility={{ "aria-describedby": "signin-button" }}
             variation="dark"
             onClick={() => {}}
             additionalClasses="flex justify-center"
+            link={false}
           >
             Sign In
           </Button>
 
           <button
-            className="text-(bg-color-2) text-sm  font-semibold my-6"
+            className="text-(bg-color-2) text-sm font-semibold cursor-pointer my-6 hover:underline"
             aria-label="Reset your password"
           >
             Forgot your password?
@@ -73,7 +77,7 @@ function SignInForm() {
             variation="light"
             onClick={() => {}}
             additionalClasses="flex justify-center"
-            accessibility={{ "aria-label": "Create a new jobTracker account" }}
+            accessibility="Open sign up page in a new tap"
           >
             Sign Up
           </Button>

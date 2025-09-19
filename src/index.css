@@ -21,3 +21,7 @@
   --accepted-status-color: #016630;
   --accepted-status-bg: #dcfce7;
 }
+
+.custom-border {
+  @apply border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] p-6;
+}

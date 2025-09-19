@@ -2,6 +2,13 @@ import { NavLink } from "react-router-dom";
 import { BarChart3, Briefcase, MessageCircle } from "lucide-react";
 
 function NavLinks({ addedClasses }: { addedClasses?: string }) {
+  const classToggle = ({ isActive }: { isActive: boolean }) =>
+    `flex gap-4 px-3 py-2 rounded-lg items-center text-sm font-semibold ${addedClasses} ${
+      isActive
+        ? "text-(--text-color-2) bg-(--bg-color-2)"
+        : "text-(--text-color) hover:bg-[#e9ebef] transition-all ease-in duration-100"
+    }`;
+
   return (
     <ul
       // For sceen readers
@@ -17,13 +24,7 @@ function NavLinks({ addedClasses }: { addedClasses?: string }) {
         <NavLink
           to="/all-applications"
           aria-label="Jobs section"
-          className={({ isActive }: { isActive: boolean }) =>
-            `flex gap-4 px-3 py-2 rounded-lg items-center text-sm font-semibold ${addedClasses} ${
-              isActive
-                ? "text-(--text-color-2) bg-(--bg-color-2)"
-                : "text-(--text-color)"
-            }`
-          }
+          className={classToggle}
         >
           <span aria-hidden="true">
             <Briefcase size={16} />
@@ -33,17 +34,7 @@ function NavLinks({ addedClasses }: { addedClasses?: string }) {
       </li>
 
       <li>
-        <NavLink
-          to="/stats"
-          aria-label="Stats section"
-          className={({ isActive }: { isActive: boolean }) =>
-            `flex gap-4 items-center rounded-lg px-3 py-2 text-sm font-semibold ${addedClasses} ${
-              isActive
-                ? "text-(--text-color-2) bg-(--bg-color-2)"
-                : "text-(--text-color)"
-            }`
-          }
-        >
+        <NavLink to="/stats" aria-label="Stats section" className={classToggle}>
           <span aria-hidden="true">
             <BarChart3 size={16} />
           </span>
@@ -55,13 +46,7 @@ function NavLinks({ addedClasses }: { addedClasses?: string }) {
         <NavLink
           to="/ai-chatbot"
           aria-label="Ai chat section"
-          className={({ isActive }: { isActive: boolean }) =>
-            `flex gap-4 items-center rounded-lg px-3 py-2 text-sm font-semibold ${addedClasses} ${
-              isActive
-                ? "text-(--text-color-2) bg-(--bg-color-2)"
-                : "text-(--text-color)"
-            }`
-          }
+          className={classToggle}
         >
           <span aria-hidden="true">
             <MessageCircle size={16} />

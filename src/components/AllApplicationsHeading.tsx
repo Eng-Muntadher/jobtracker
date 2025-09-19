@@ -13,6 +13,7 @@ function AllApplicationsHeading() {
         </p>
       </div>
       <Button
+        to="/add-application"
         variation="dark"
         onClick={() => {}}
         additionalClasses="px-3 flex gap-2 mx-4 max-[623px]:mt-4"

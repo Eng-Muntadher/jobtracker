@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, ChevronUp, Search } from "lucide-react";
+import CustomSelect from "./CustomSelect";
 
 function FilterAndSortApplications() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -68,7 +69,7 @@ function FilterAndSortApplications() {
             />
           </div>
 
-          <div className="relative">
+          {/* <div className="relative">
             <button
               aria-haspopup="listbox"
               aria-expanded={menuIsOpen}
@@ -105,7 +106,12 @@ function FilterAndSortApplications() {
                 </ul>
               </div>
             )}
-          </div>
+          </div> */}
+
+          <CustomSelect
+            addedClasses="w-48 max-sm:w-full"
+            optionsArray={["Applied", "Interviewing", "Rejected", "Accepted"]}
+          />
         </div>
       </div>
     </section>
