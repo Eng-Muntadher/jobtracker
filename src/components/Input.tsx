@@ -50,7 +50,11 @@ function Input({
         />
       )}
       {srOnlyInfo && (
-        <p className="sr-only" role="alert" id={`${id}-help`}>
+        <p
+          className="sr-only"
+          aria-required={required ? true : false}
+          id={`${id}-help`}
+        >
           {srOnlyInfo}
         </p>
       )}

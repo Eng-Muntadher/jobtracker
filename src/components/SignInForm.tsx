@@ -5,10 +5,7 @@ function SignInForm() {
   return (
     <div className="mx-4">
       <div className="mt-20 bg-(--bg-color-1) border rounded-[0.875rem] container mx-auto max-w-md border-[rgba(0,0,0,0.1)] p-6">
-        <section
-          aria-labelledby="signin-heading"
-          className="flex flex-col text-center"
-        >
+        <section className="flex flex-col text-center">
           <div>
             <h1 className="text-(--text-color) font-semibold mb-1.5">
               Welcome Back
@@ -49,16 +46,16 @@ function SignInForm() {
               required={true}
               addedClasses="mb-4 text-(--text-color-secondary) w-full"
             />
-          </form>
 
-          <Button
-            variation="dark"
-            onClick={() => {}}
-            additionalClasses="flex justify-center"
-            link={false}
-          >
-            Sign In
-          </Button>
+            <Button
+              variation="dark"
+              onClick={() => {}}
+              additionalClasses="flex justify-center w-full"
+              link={false}
+            >
+              Sign In
+            </Button>
+          </form>
 
           <button
             className="text-(bg-color-2) text-sm font-semibold cursor-pointer my-6 hover:underline"

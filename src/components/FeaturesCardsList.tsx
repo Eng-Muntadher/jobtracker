@@ -28,10 +28,7 @@ const StaticData = [
 
 function FeaturesCardsList() {
   return (
-    <section
-      aria-labelledby="features-heading"
-      className="container flex flex-wrap gap-6 mx-auto mb-16 md:justify-center"
-    >
+    <section className="container flex flex-wrap gap-6 mx-auto mb-16 md:justify-center">
       {StaticData.map((card) => (
         <FeaturesCard
           heading={card.heading}

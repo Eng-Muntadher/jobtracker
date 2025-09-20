@@ -13,7 +13,7 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - React Query
 - Redux
 - React Toaster
-- Recharts.
+- Recharts
 - Lucide Icons
 - Supabase
 
@@ -25,6 +25,7 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - Login page (fully responsive)
 - Static applications page (fully responsive)
 - Static new-application page (fully responsive)
+- Static one-Application page (fully responsive)
 
 ---
 
@@ -57,6 +58,10 @@ A portfolio project for tracking a user's job applications with full Authenticat
 ### Add New Applications Page
 
 ![New Application Page Screenshot](public/assets/AddNewApplication.png)
+
+### One Applications Page
+
+![Single Application Page Screenshot](public/assets/SingleApplicationPage.png)
 
 ---
 

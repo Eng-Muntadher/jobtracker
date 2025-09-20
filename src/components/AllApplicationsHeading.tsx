@@ -18,7 +18,7 @@ function AllApplicationsHeading() {
         onClick={() => {}}
         additionalClasses="px-3 flex gap-2 mx-4 max-[623px]:mt-4"
       >
-        <span className="">
+        <span aria-hidden="true">
           <Plus size={16} />
         </span>
         <span>Add Application</span>

@@ -5,7 +5,10 @@ function HomePageStats() {
       aria-labelledby="stats-heading"
     >
       <div className="max-xl:mx-4 bg-(--landing-page-section-color) p-8 mb-16 rounded-[0.562rem] w-6xl">
-        <h2 className="text-center text-(--text-color) text-3xl mb-8">
+        <h2
+          className="text-center text-(--text-color) text-3xl mb-8"
+          id="status-heading"
+        >
           Join Thousands of Job Seekers
         </h2>
 

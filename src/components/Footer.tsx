@@ -8,13 +8,15 @@ function Footer() {
       <div className="container grid items-center max-w-6xl grid-cols-3 mx-auto max-md:grid-cols-1">
         <div className="max-xl:ml-4 max-md:ml-0">
           <h3 className="flex items-center gap-2 mb-4 text-(--text-color) text-lg max-md:justify-center">
-            <span>
+            <span aria-hidden="true">
               <Mail size={20} />
-            </span>{" "}
+            </span>
             Contact Me
           </h3>
           <a
             href=""
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-(--text-color-secondary) hover:text-(--text-color) block max-md:mb-8 max-md:text-center"
           >
             email@example.com
@@ -23,9 +25,9 @@ function Footer() {
 
         <div>
           <h3 className="flex items-center gap-2 mb-4 text-(--text-color) text-lg justify-center">
-            <span className="">
+            <span aria-hidden="true">
               <ExternalLink size={20} />
-            </span>{" "}
+            </span>
             See More Projects
           </h3>
           <a
@@ -35,7 +37,7 @@ function Footer() {
             aria-label="View portfolio (opens in new window)"
           >
             My Portfolio
-            <span>
+            <span aria-hidden="true">
               <ExternalLink size={16} />
             </span>
           </a>
@@ -43,7 +45,7 @@ function Footer() {
 
         <div className="max-xl:mr-4 max-md:mr-0">
           <h3 className="flex items-center gap-2 mb-4 text-(--text-color) text-lg justify-end max-md:justify-center">
-            <span>
+            <span aria-hidden="true">
               <Github size={20} />
             </span>
             View Code
@@ -55,7 +57,7 @@ function Footer() {
             aria-label="View source code on GitHub (opens in new window)"
           >
             GitHub
-            <span>
+            <span aria-hidden="true">
               <Github size={16} />
             </span>
           </a>

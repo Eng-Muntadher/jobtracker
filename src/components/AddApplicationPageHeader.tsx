@@ -21,7 +21,10 @@ function AddApplicationPageHeader() {
         aria-labelledby="add-application-title"
         className="mb-6 text-center"
       >
-        <h1 className="text-(--text-color) text-3xl font-semibold mb-2">
+        <h1
+          className="text-(--text-color) text-3xl font-semibold mb-2"
+          id="add-application-title"
+        >
           Add New Application
         </h1>
         <p className="text-(--text-color-secondary)">

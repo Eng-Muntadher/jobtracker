@@ -22,7 +22,7 @@ function Button({
   onClick,
   children,
   variation,
-  to = "#",
+  to = "",
   type = "button",
   link = true,
   accessibility,

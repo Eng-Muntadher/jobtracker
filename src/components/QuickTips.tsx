@@ -4,7 +4,10 @@ function QuickTips() {
       aria-labelledby="quick-tips-heading"
       className="max-w-3xl mx-auto mb-8 custom-border bg-(--input-color)"
     >
-      <h4 className="text-(--text-color) text-lg font-semibold mb-7">
+      <h4
+        className="text-(--text-color) text-lg font-semibold mb-7"
+        id="quick-tips-heading"
+      >
         <span aria-hidden="true">💡 </span>
         <span>Quick Tips</span>
       </h4>

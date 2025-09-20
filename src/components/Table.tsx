@@ -1,6 +1,8 @@
 import { ArrowUpDown, Trash2Icon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function Table() {
+  const navigate = useNavigate();
   return (
     <section
       aria-labelledby="applications-heading"
@@ -88,7 +90,13 @@ function Table() {
           </thead>
 
           <tbody className="block w-full">
-            <tr className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer">
+            <tr
+              className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
+              onClick={() => navigate(`/application/0`)}
+              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
+              tabIndex={0}
+              role="button"
+            >
               <td className="flex justify-center w-1/5 text-sm font-semibold">
                 Google
               </td>
@@ -114,7 +122,13 @@ function Table() {
               </td>
             </tr>
 
-            <tr className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer">
+            <tr
+              className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
+              onClick={() => navigate(`/application/0`)}
+              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
+              tabIndex={0}
+              role="button"
+            >
               <td className="flex justify-center w-1/5 text-sm font-semibold">
                 Microsoft
               </td>
@@ -140,7 +154,13 @@ function Table() {
               </td>
             </tr>
 
-            <tr className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer">
+            <tr
+              className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
+              onClick={() => navigate(`/application/0`)}
+              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
+              tabIndex={0}
+              role="button"
+            >
               <td className="flex justify-center w-1/5 text-sm font-semibold">
                 Meta
               </td>
@@ -166,7 +186,13 @@ function Table() {
               </td>
             </tr>
 
-            <tr className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer">
+            <tr
+              className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
+              onClick={() => navigate(`/application/0`)}
+              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
+              tabIndex={0}
+              role="button"
+            >
               <td className="flex justify-center w-1/5 text-sm font-semibold">
                 Spotify
               </td>
@@ -192,7 +218,13 @@ function Table() {
               </td>
             </tr>
 
-            <tr className="flex py-4 hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer">
+            <tr
+              className="flex py-4 hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
+              onClick={() => navigate(`/application/0`)}
+              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
+              tabIndex={0}
+              role="button"
+            >
               <td className="flex justify-center w-1/5 text-sm font-semibold">
                 Airbnb
               </td>

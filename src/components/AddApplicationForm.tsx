@@ -300,7 +300,7 @@ function AddApplicationForm() {
           <span>
             <X size={16} />
           </span>
-          <span>Cencel</span>
+          <span>Cancel</span>
         </Button>
 
         <Button

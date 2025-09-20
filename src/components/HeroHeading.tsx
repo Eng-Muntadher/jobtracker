@@ -4,7 +4,10 @@ function HeroHeading() {
   return (
     <section aria-labelledby="hero-heading">
       <div className="container flex flex-col items-center mx-auto mb-16 text-center">
-        <h1 className="mb-6 text-6xl text-[var(--text-color)] max-md:text-4xl">
+        <h1
+          className="mb-6 text-6xl text-[var(--text-color)] max-md:text-4xl"
+          id="hero-heading"
+        >
           Track Your Job Applications
         </h1>
 

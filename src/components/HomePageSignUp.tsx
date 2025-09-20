@@ -6,7 +6,10 @@ function SignUpForHomePage() {
       aria-label="cta-heading"
       className="container flex flex-col items-center mx-auto mb-36"
     >
-      <h2 className="text-(--text-color) text-3xl mb-4 text-center">
+      <h2
+        className="text-(--text-color) text-3xl mb-4 text-center"
+        id="cta-heading"
+      >
         Reday to Get Organized?
       </h2>
       <p className="text-(--text-color-secondary) text-center leading-[1.75] text-xl mb-8">
