@@ -26,6 +26,7 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - Static applications page (fully responsive)
 - Static new-application page (fully responsive)
 - Static one-Application page (fully responsive)
+- Static Stats page (fully responsive)
 
 ---
 
@@ -55,13 +56,17 @@ A portfolio project for tracking a user's job applications with full Authenticat
 
 ![Applications Page Screenshot](public/assets/applications.png)
 
-### Add New Applications Page
+### New Applications Page
 
 ![New Application Page Screenshot](public/assets/AddNewApplication.png)
 
-### One Applications Page
+### Single Applications Page
 
 ![Single Application Page Screenshot](public/assets/SingleApplicationPage.png)
+
+### Stats Page
+
+![Stats Page Screenshot](public/assets/StatsPage.png)
 
 ---
 
