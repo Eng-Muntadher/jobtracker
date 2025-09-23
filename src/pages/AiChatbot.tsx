@@ -1,5 +1,15 @@
+import AiChatBox from "../components/AiChatBox";
+import AIChatCardsList from "../components/AIChatCardsList";
+import AiChatHeader from "../components/AiChatHeader";
+
 function AiChatbot() {
-  return <p>This area is still in development. Please come back later 😀.</p>;
+  return (
+    <div className="container px-4 mx-auto mb-8 ">
+      <AiChatHeader />
+      <AiChatBox />
+      <AIChatCardsList />
+    </div>
+  );
 }
 
 export default AiChatbot;

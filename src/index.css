@@ -28,3 +28,7 @@
 .custom-border {
   @apply border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] p-6;
 }
+
+.custom-border-no-padding {
+  @apply border border-[rgba(0,0,0,0.1)] rounded-[0.875rem];
+}

@@ -68,6 +68,10 @@ A portfolio project for tracking a user's job applications with full Authenticat
 
 ![Stats Page Screenshot](public/assets/StatsPage.png)
 
+### AI Chat Page
+
+![AI Chat Page Screenshot](public/assets/AIChatPage.png)
+
 ---
 
 ## Running Locally
