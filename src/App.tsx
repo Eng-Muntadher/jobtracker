@@ -7,6 +7,10 @@ import Stats from "./pages/Stats";
 import AiChatbot from "./pages/AiChatbot";
 import SingleApplicationPage from "./pages/SingleApplicationPage";
 import AddApplicationPage from "./pages/AddApplicationPage";
+import UserProfile from "./pages/UserProfile";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -42,12 +46,20 @@ const router = createBrowserRouter([
         path: "/add-application",
         element: <AddApplicationPage />,
       },
+      {
+        path: "/user-profile",
+        element: <UserProfile />,
+      },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

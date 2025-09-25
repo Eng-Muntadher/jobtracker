@@ -1,0 +1,24 @@
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import {
+  login,
+  login as loginApi,
+  type loginArguments,
+} from "../servises/UserApi";
+
+type LoginResult = Awaited<ReturnType<typeof login>>;
+
+export function useLogin() {
+  const navigate = useNavigate();
+
+  const { mutate: login, isPending } = useMutation<
+    LoginResult,
+    Error,
+    loginArguments
+  >({
+    mutationFn: ({ email, password }) => loginApi({ email, password }),
+    onSuccess: () => navigate("/"),
+    onError: (error) => console.log(error),
+  });
+  return { login, isPending };
+}

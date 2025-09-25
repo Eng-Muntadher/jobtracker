@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 interface ButtonProps {
   children?: string | ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   additionalClasses?: string;
-  variation: "light" | "dark";
+  variation: "light" | "dark" | "red";
   to?: string;
   type?: "button" | "submit" | "reset";
   accessibility?: string; // In this btn, we usually just need Aria label for accessibility
@@ -15,6 +15,7 @@ interface ButtonProps {
 type BtnVariation = {
   light: string;
   dark: string;
+  red: string;
 };
 
 function Button({
@@ -34,6 +35,7 @@ function Button({
     light:
       "text-(--text-color) bg-(--bg-color-1) border-[rgba(0,0,0,0.1)] hover:bg-[#e9ebef]",
     dark: "text-(--text-color-2) bg-(--bg-color-2) hover:bg-[#2d2d2d]",
+    red: "text-white bg-(--sign-out-btn) px-3 py-2 flex gap-4 items-center rounded-lg justify-center",
   };
 
   return link ? (

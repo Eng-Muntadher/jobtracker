@@ -1,7 +1,26 @@
+import { useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
+import { useLogin } from "../hooks/useLogin";
 
 function SignInForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, isPending } = useLogin();
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    login({ email, password });
+  }
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
   return (
     <div className="mx-4">
       <div className="mt-20 bg-(--bg-color-1) border rounded-[0.875rem] container mx-auto max-w-md border-[rgba(0,0,0,0.1)] p-6">
@@ -15,7 +34,7 @@ function SignInForm() {
             </p>
           </div>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <label
               htmlFor="email"
               className="block text-(--text-color) font-semibold text-sm mb-2 text-start"
@@ -27,6 +46,9 @@ function SignInForm() {
               type="email"
               id="email"
               name="email"
+              value={email}
+              disabled={isPending}
+              onChange={handleEmailChange}
               placeholder="Enter your email"
               required={true}
               addedClasses="mb-4 text-(--text-color-secondary) w-full"
@@ -42,6 +64,9 @@ function SignInForm() {
               type="password"
               id="password"
               name="password"
+              value={password}
+              disabled={isPending}
+              onChange={handlePasswordChange}
               placeholder="Enter your password"
               required={true}
               addedClasses="mb-4 text-(--text-color-secondary) w-full"
@@ -49,7 +74,7 @@ function SignInForm() {
 
             <Button
               variation="dark"
-              onClick={() => {}}
+              type="submit"
               additionalClasses="flex justify-center w-full"
               link={false}
             >

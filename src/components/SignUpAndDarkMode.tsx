@@ -1,7 +1,12 @@
 import { Moon } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useUser } from "../hooks/useUser";
 import Button from "./Button";
+import UserImage from "../images/userImg.png";
 
 function SignUpAndDarkMode() {
+  const { data: user } = useUser();
+
   return (
     <div className="flex items-center justify-center">
       <button
@@ -11,14 +16,16 @@ function SignUpAndDarkMode() {
         <Moon size={16} />
       </button>
 
-      <Button
-        to="sign-in"
-        variation="light"
-        additionalClasses="px-4"
-        onClick={() => console.log("Nav Clicked")}
-      >
-        Sign Up
-      </Button>
+      {/* If user in authenticated, display the user profile. Otherwise display the sign In btn*/}
+      {!user ? (
+        <Button to="sign-in" variation="light" additionalClasses="px-4">
+          Sign In
+        </Button>
+      ) : (
+        <Link to="user-profile">
+          <img src={UserImage} height={32} width={32} alt="Profile image" />
+        </Link>
+      )}
     </div>
   );
 }

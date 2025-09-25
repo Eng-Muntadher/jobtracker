@@ -10,6 +10,9 @@ interface InputProps {
   type: string;
   id: string;
   name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
   placeholder?: string;
   required?: boolean;
   addedClasses?: string;
@@ -24,6 +27,9 @@ function Input({
   required = false,
   addedClasses = "",
   srOnlyInfo = "",
+  value,
+  disabled = false,
+  onChange,
 }: InputProps) {
   const styles =
     "bg-(--input-color) rounded-lg px-3 py-2 focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100";
@@ -43,6 +49,9 @@ function Input({
           type={type}
           id={id}
           name={name}
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
           placeholder={placeholder}
           required={required}
           aria-describedby={srOnlyInfo ? `${id}-help` : undefined}

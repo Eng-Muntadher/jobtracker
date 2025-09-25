@@ -27,12 +27,13 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - Static new-application page (fully responsive)
 - Static one-Application page (fully responsive)
 - Static Stats page (fully responsive)
+- Static user profile page (fully responsive)
+- Full authentication with Supabase
 
 ---
 
 ## Planned / Future Features
 
-- Full authentication with Supabase
 - CRUD operations for job applications
 - User dashboard with job statistics
 - Notifications using React Toaster
@@ -71,6 +72,10 @@ A portfolio project for tracking a user's job applications with full Authenticat
 ### AI Chat Page
 
 ![AI Chat Page Screenshot](public/assets/AIChatPage.png)
+
+### User Profile Page
+
+![User Profile Page Screenshot](public/assets/UserProfilePage.png)
 
 ---
 
