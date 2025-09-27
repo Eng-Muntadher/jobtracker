@@ -1,22 +1,17 @@
-/**
- * Accessible Input component.
- * Renders an input with optional required validation and a visually hidden
- * sr-only message (`srOnlyInfo`) that is announced by screen readers via
- * aria-describedby and role="alert".
- * Allows custom styling through addedClasses.
- */
-
 interface InputProps {
   type: string;
   id: string;
   name: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange:
+    | ((e: React.ChangeEvent<HTMLInputElement>) => void)
+    | ((e: React.ChangeEvent<HTMLTextAreaElement>) => void);
   disabled?: boolean;
   placeholder?: string;
   required?: boolean;
   addedClasses?: string;
   srOnlyInfo?: string;
+  autoComplete?: string;
 }
 
 function Input({
@@ -29,16 +24,20 @@ function Input({
   srOnlyInfo = "",
   value,
   disabled = false,
+  autoComplete,
   onChange,
 }: InputProps) {
   const styles =
     "bg-(--input-color) rounded-lg px-3 py-2 focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100";
+
   return (
     <>
       {type === "textarea" ? (
         <textarea
           id={id}
           name={name}
+          value={value}
+          onChange={onChange as React.ChangeEventHandler<HTMLTextAreaElement>} // cast needed
           placeholder={placeholder}
           required={required}
           aria-describedby={srOnlyInfo ? `${id}-help` : undefined}
@@ -50,10 +49,11 @@ function Input({
           id={id}
           name={name}
           value={value}
-          onChange={onChange}
+          onChange={onChange as React.ChangeEventHandler<HTMLInputElement>} // optional cast
           disabled={disabled}
           placeholder={placeholder}
           required={required}
+          autoComplete={autoComplete}
           aria-describedby={srOnlyInfo ? `${id}-help` : undefined}
           className={`${styles} ${addedClasses}`}
         />

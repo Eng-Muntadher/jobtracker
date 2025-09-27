@@ -6,14 +6,10 @@ function UserProfileCards() {
     <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
       <JobDescriptionCard
         heading="Experience"
-        text="5+ years"
+        type="description"
         icon={Briefcase}
       />
-      <JobDescriptionCard
-        heading="Education"
-        text="Bachelor's in Computer Science"
-        icon={Book}
-      />
+      <JobDescriptionCard heading="Education" icon={Book} type="jobNotes" />
     </div>
   );
 }

@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from "react";
 
 interface SelectOptions {
   optionsArray: string[];
+  onChange: (value: string) => void;
   addedClasses?: string;
 }
-function CustomSelect({ optionsArray, addedClasses }: SelectOptions) {
+function CustomSelect({ optionsArray, addedClasses, onChange }: SelectOptions) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -16,6 +17,7 @@ function CustomSelect({ optionsArray, addedClasses }: SelectOptions) {
   }
 
   function handleChangeStatus(item: string) {
+    onChange(item);
     setStatusFilter(item);
     setMenuIsOpen(false);
   }
@@ -40,9 +42,11 @@ function CustomSelect({ optionsArray, addedClasses }: SelectOptions) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   return (
     <div className="relative">
       <button
+        type="button"
         id="application-status"
         aria-haspopup="listbox"
         aria-expanded={menuIsOpen}

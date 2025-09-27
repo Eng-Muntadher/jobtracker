@@ -51,7 +51,8 @@ function SignInForm() {
               onChange={handleEmailChange}
               placeholder="Enter your email"
               required={true}
-              addedClasses="mb-4 text-(--text-color-secondary) w-full"
+              autoComplete="email"
+              addedClasses="mb-4 w-full"
             />
 
             <label
@@ -69,7 +70,8 @@ function SignInForm() {
               onChange={handlePasswordChange}
               placeholder="Enter your password"
               required={true}
-              addedClasses="mb-4 text-(--text-color-secondary) w-full"
+              autoComplete="current-password"
+              addedClasses="mb-4 w-full"
             />
 
             <Button

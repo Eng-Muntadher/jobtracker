@@ -1,18 +1,23 @@
-import { ArrowUpDown, Trash2Icon } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { ArrowUpDown } from "lucide-react";
+import { UseFetchApplications } from "../hooks/useFetchApplications";
+import TableRow from "./TableRow";
+import Spinner from "./Spinner";
 
 function Table() {
-  const navigate = useNavigate();
+  const { data, isPending } = UseFetchApplications();
+
+  if (isPending) return <Spinner />;
+
   return (
     <section
       aria-labelledby="applications-heading"
       className="container mx-auto mb-6"
     >
-      <div className="mx-4 bg-(--bg-color-1) overflow-auto">
+      <div className="mx-4 bg-(--bg-color-1) overflow-auto max-h-[263.6px]">
         <table
           role="table"
           aria-label="job applications tracking table"
-          className="border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] block pt-2.5 min-w-[736px]"
+          className="border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] block pt-2.5 min-w-[736px] min-h-[263.6px]"
         >
           <thead className="block w-full">
             <tr className="flex justify-between pb-2.5 border-b border-[rgba(0,0,0,0.1)]">
@@ -90,163 +95,16 @@ function Table() {
           </thead>
 
           <tbody className="block w-full">
-            <tr
-              className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
-              onClick={() => navigate(`/application/0`)}
-              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
-              tabIndex={0}
-              role="button"
-            >
-              <td className="flex justify-center w-1/5 text-sm font-semibold">
-                Google
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">
-                Software Engineer
-              </td>
-              <td
-                aria-label="Status: Interviewing"
-                className="flex justify-center w-1/5"
-              >
-                <span className="text-xs font-semibold bg-(--interviewing-status-bg) text-(--interviewing-status-color) py-0.5 px-2 rounded-lg">
-                  Interviewing
-                </span>
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">
-                <time dateTime="1/15/2024">1/15/2024</time>
-              </td>
-              <td
-                aria-label="delete this application"
-                className="flex justify-center w-1/5"
-              >
-                <Trash2Icon color="red" size={16} />
-              </td>
-            </tr>
-
-            <tr
-              className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
-              onClick={() => navigate(`/application/0`)}
-              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
-              tabIndex={0}
-              role="button"
-            >
-              <td className="flex justify-center w-1/5 text-sm font-semibold">
-                Microsoft
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">
-                Front end developer
-              </td>
-              <td
-                className="flex justify-center w-1/5"
-                aria-label="Status: applied"
-              >
-                <span className="text-xs font-semibold bg-(--applied-status-bg) text-(--applied-status-color) py-0.5 px-2 rounded-lg">
-                  Applied
-                </span>
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">
-                <time dateTime="1/20/2024">1/20/2024</time>
-              </td>
-              <td
-                className="flex justify-center w-1/5"
-                aria-label="delete this application"
-              >
-                <Trash2Icon color="red" size={16} />
-              </td>
-            </tr>
-
-            <tr
-              className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
-              onClick={() => navigate(`/application/0`)}
-              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
-              tabIndex={0}
-              role="button"
-            >
-              <td className="flex justify-center w-1/5 text-sm font-semibold">
-                Meta
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">
-                Product Manager
-              </td>
-              <td
-                className="flex justify-center w-1/5"
-                aria-label="Status: rejected"
-              >
-                <span className="text-xs font-semibold bg-(--rejected-status-bg) text-(--rejected-status-color) py-0.5 px-2 rounded-lg">
-                  Rejected
-                </span>
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">
-                <time dateTime="1/10/2024">1/10/2024</time>
-              </td>
-              <td
-                className="flex justify-center w-1/5"
-                aria-label="delete this application"
-              >
-                <Trash2Icon color="red" size={16} />
-              </td>
-            </tr>
-
-            <tr
-              className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
-              onClick={() => navigate(`/application/0`)}
-              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
-              tabIndex={0}
-              role="button"
-            >
-              <td className="flex justify-center w-1/5 text-sm font-semibold">
-                Spotify
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">
-                Backend Engineer
-              </td>
-              <td
-                className="flex justify-center w-1/5"
-                aria-label="Status: accepted"
-              >
-                <span className="text-xs font-semibold bg-(--accepted-status-bg) text-(--accepted-status-color) py-0.5 px-2 rounded-lg">
-                  Accepted
-                </span>
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">
-                <time dateTime="1/5/2024">1/5/2024</time>
-              </td>
-              <td
-                className="flex justify-center w-1/5"
-                aria-label="delete this application"
-              >
-                <Trash2Icon color="red" size={16} />
-              </td>
-            </tr>
-
-            <tr
-              className="flex py-4 hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
-              onClick={() => navigate(`/application/0`)}
-              onKeyDown={(e) => e.key === "Enter" && navigate(`/application/0`)}
-              tabIndex={0}
-              role="button"
-            >
-              <td className="flex justify-center w-1/5 text-sm font-semibold">
-                Airbnb
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">UX Designer</td>
-              <td
-                className="flex justify-center w-1/5 "
-                aria-label="Status: Interviewing"
-              >
-                <span className="text-xs font-semibold bg-(--interviewing-status-bg) text-(--interviewing-status-color) py-0.5 px-2 rounded-lg">
-                  Interviewing
-                </span>
-              </td>
-              <td className="flex justify-center w-1/5 text-sm">
-                <time dateTime="1/18/2024">1/18/2024</time>
-              </td>
-              <td
-                className="flex justify-center w-1/5"
-                aria-label="delete this application"
-              >
-                <Trash2Icon color="red" size={16} />
-              </td>
-            </tr>
+            {data?.map((application) => (
+              <TableRow
+                key={application.id}
+                id={application.id}
+                company={application.company_name}
+                role={application.job_title}
+                date={application.application_date}
+                status={application.application_status}
+              />
+            ))}
           </tbody>
         </table>
       </div>

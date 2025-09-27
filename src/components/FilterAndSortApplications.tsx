@@ -24,7 +24,7 @@ function FilterAndSortApplications() {
               id="search-applications"
               aria-describedby="search-help"
               placeholder="Search by company or job title..."
-              className="bg-(--input-color) rounded-lg pr-3 pl-10 py-2 w-full text-sm focus:outline-none"
+              className="bg-(--input-color) rounded-lg pr-3 pl-10 py-2 w-full text-sm focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100"
             />
           </div>
 

@@ -1,19 +1,38 @@
 import { Calendar, DollarSign, MapPin } from "lucide-react";
 
-function JobInfoCard() {
+interface JobInfoCardProps {
+  companyName: string;
+  jobTitle: string;
+  location: string;
+  applicationDate: string;
+  applicationStatus: string;
+  salary: string;
+}
+
+function JobInfoCard({
+  companyName,
+  jobTitle,
+  location,
+  applicationDate,
+  applicationStatus,
+  salary,
+}: JobInfoCardProps) {
+  const cssTextColor = `var(--${applicationStatus.toLowerCase()}-status-color)`;
+  const cssBgColor = `var(--${applicationStatus.toLowerCase()}-status-bg)`;
   return (
     <section aria-labelledby="job-details" className="custom-border">
       <div className="flex justify-between mb-[1.85rem]">
         <div>
           <h4 className="text-(--text-color) text-3xl mb-2" id="job-details">
-            Amazon
+            {companyName}
           </h4>
-          <p className="text-(--text-color-secondary) text-xl">
-            Software Engineer
-          </p>
+          <p className="text-(--text-color-secondary) text-xl">{jobTitle}</p>
         </div>
-        <span className="text-xs font-semibold bg-(--interviewing-status-bg) text-(--interviewing-status-color) py-0.5 px-2 rounded-lg h-fit">
-          Interviewing
+        <span
+          className="text-xs font-semibold py-0.5 px-2 rounded-lg h-fit"
+          style={{ color: cssTextColor, backgroundColor: cssBgColor }}
+        >
+          {applicationStatus}
         </span>
       </div>
 
@@ -23,7 +42,7 @@ function JobInfoCard() {
             <span aria-hidden="true">
               <MapPin size={16} />
             </span>
-            Mountain View. CA
+            {location ? location : <span>No location specified</span>}
           </p>
           <p
             aria-label="date-applied"
@@ -32,7 +51,8 @@ function JobInfoCard() {
             <span aria-hidden="true">
               <Calendar size={16} />
             </span>
-            Applied <time dateTime="2024-01-15">1/15/2024</time>
+            Applied
+            <time dateTime={applicationDate}>{applicationDate}</time>
           </p>
         </div>
 
@@ -40,7 +60,7 @@ function JobInfoCard() {
           <span aria-hidden="true">
             <DollarSign size={16} />
           </span>
-          $150,000 - $200,000
+          {salary ? salary : <span>No salary specified</span>}
         </p>
       </div>
     </section>

@@ -12,6 +12,7 @@
   --text-color-secondary: #717182;
   --landing-page-section-color: #ececf0;
   --input-color: #f3f3f5;
+
   --interviewing-status-color: #894b00;
   --interviewing-status-bg: #fef9c2;
   --applied-status-color: #193cb8;
@@ -20,11 +21,21 @@
   --rejected-status-bg: #ffe2e2;
   --accepted-status-color: #016630;
   --accepted-status-bg: #dcfce7;
+
   --company-card-color: rgba(3, 2, 19, 0.1);
   --tipsCard-yellow: #fefce8;
   --tipsCard-green: #f0fdf4;
   --sign-out-btn: #d4183d;
   --skill-bg: #eceef2;
+
+  /* React hot toast global styles */
+  --toast-width: 300px;
+  --toast-max-width: 90vw;
+  --toast-min-width: 240px;
+  --toast-padding: 12px 16px;
+  --toast-font-size: 14px;
+  --toast-line-height: 1.4;
+  --toast-border-radius: 8px;
 }
 
 .custom-border {

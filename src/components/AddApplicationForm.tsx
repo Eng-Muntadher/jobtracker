@@ -10,17 +10,64 @@ import {
 import Button from "./Button";
 import Input from "./Input";
 import CustomSelect from "./CustomSelect";
+import { useState } from "react";
+import { useUploadApplication } from "../hooks/useUploadApplication";
+import Spinner from "./Spinner";
+
+type event = React.ChangeEvent<HTMLInputElement>;
 
 function AddApplicationForm() {
+  const [companyName, setCompanyName] = useState<string>("");
+  const [jobTitle, setJobTitle] = useState<string>("");
+  const [applicationStatus, setApplicationStatus] = useState<string>("Applied");
+  const [applicationDate, setApplicationDate] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
+  const [jobPosting, setJobPosting] = useState<string>("");
+  const [contact, setContact] = useState<string>("");
+  const [salary, setSalary] = useState<string>("");
+  const [jobDetails, setJobDetails] = useState<string>("");
+  const [jobNotes, setJobNotes] = useState<string>("");
+  const { isPending, uploadApplication } = useUploadApplication();
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const data = {
+      user_id: "",
+      companyName,
+      jobTitle,
+      applicationStatus,
+      applicationDate,
+      location,
+      jobPosting,
+      contact,
+      salary,
+      jobDetails,
+      jobNotes,
+    };
+    uploadApplication(data);
+    handleReset();
   }
+
+  function handleReset() {
+    setCompanyName("");
+    setJobTitle("");
+    setApplicationStatus("");
+    setApplicationDate("");
+    setLocation("");
+    setJobPosting("");
+    setContact("");
+    setSalary("");
+    setJobDetails("");
+    setJobNotes("");
+  }
+
   return (
     <form
       aria-label="New job application form"
       className="grid grid-cols-1 mb-6 justify-items-center"
       onSubmit={handleSubmit}
     >
+      {isPending && <Spinner />}
       <fieldset className="block w-full max-w-3xl mb-6 custom-border">
         <h4
           aria-label="basic information"
@@ -53,8 +100,11 @@ function AddApplicationForm() {
             </label>
             <Input
               type="text"
+              required={true}
               id="company-name"
               name="companyName"
+              value={companyName}
+              onChange={(e: event) => setCompanyName(e.target.value)}
               placeholder="e.g., Google, Microsoft, Meta"
               srOnlyInfo="Enter the name of the company you are applying for"
               addedClasses="block w-full text-sm"
@@ -76,8 +126,11 @@ function AddApplicationForm() {
             </label>
             <Input
               type="text"
+              required={true}
               id="job-title"
               name="jobTitle"
+              value={jobTitle}
+              onChange={(e: event) => setJobTitle(e.target.value)}
               placeholder="e.g., Software Engineer, Product Manager"
               srOnlyInfo="Enter the name of the position you are applying for"
               addedClasses="block w-full text-sm mb-6"
@@ -93,6 +146,7 @@ function AddApplicationForm() {
               </span>
             </label>
             <CustomSelect
+              onChange={setApplicationStatus}
               addedClasses="w-full"
               optionsArray={["Applied", "Interviewing", "Rejected", "Accepted"]}
             />
@@ -113,8 +167,11 @@ function AddApplicationForm() {
             </label>
             <Input
               type="date"
+              required={true}
               id="application-date"
               name="applicationDate"
+              value={applicationDate}
+              onChange={(e: event) => setApplicationDate(e.target.value)}
               srOnlyInfo="Enter the date of the current application"
               addedClasses="block w-full text-sm cursor-pointer mb-6"
             />
@@ -137,6 +194,8 @@ function AddApplicationForm() {
             type="text"
             id="location"
             name="location"
+            value={location}
+            onChange={(e: event) => setLocation(e.target.value)}
             placeholder="e.g., San Francisco, CA or Remote"
             srOnlyInfo="Enter the location of the company you are applying for"
             addedClasses="block w-full text-sm"
@@ -171,6 +230,8 @@ function AddApplicationForm() {
               type="text"
               id="job-posting"
               name="jobPosting"
+              value={jobPosting}
+              onChange={(e: event) => setJobPosting(e.target.value)}
               placeholder="https://company.com/careers/job-id"
               srOnlyInfo="Enter the link of the company you are applying for (optional)"
               addedClasses="block w-full text-sm"
@@ -187,6 +248,8 @@ function AddApplicationForm() {
               type="text"
               id="contact"
               name="contact"
+              value={contact}
+              onChange={(e: event) => setContact(e.target.value)}
               placeholder="https://linkedin.com/in/recruiter or email"
               srOnlyInfo="Enter the contact info of the job recruiter"
               addedClasses="block w-full text-sm mb-6"
@@ -210,6 +273,8 @@ function AddApplicationForm() {
             type="text"
             id="salary"
             name="salary"
+            value={salary}
+            onChange={(e: event) => setSalary(e.target.value)}
             placeholder="e.g., $12,000 - $150,000 or $75/hour"
             srOnlyInfo="Enter the expected salary of the role you are applying for"
             addedClasses="block w-full text-sm"
@@ -241,6 +306,8 @@ function AddApplicationForm() {
             type="textarea"
             id="description"
             name="description"
+            value={jobDetails}
+            onChange={(e: event) => setJobDetails(e.target.value)}
             placeholder="Describe the role, responsibilities, requirements and any relevant details..."
             srOnlyInfo="Describe the role, responsibilities, requirements and any relevant details"
             addedClasses="block w-full text-sm min-h-16"
@@ -277,6 +344,8 @@ function AddApplicationForm() {
             type="textarea"
             id="notes"
             name="notes"
+            value={jobNotes}
+            onChange={(e: event) => setJobNotes(e.target.value)}
             placeholder="Add your thoughts, interview feedback, follow-up reminders, or any other notes..."
             srOnlyInfo="Add your thoughts, interview feedback, follow-up reminders, or any other notes"
             addedClasses="block w-full text-sm min-h-16"
@@ -291,7 +360,7 @@ function AddApplicationForm() {
         {/* A Reset btn is safer and more controllable as type=button with a handler*/}
         <Button
           type="button"
-          onClick={() => {}}
+          onClick={handleReset}
           variation="light"
           additionalClasses="gap-4 px-3 py-2 justify-center"
           link={false}
