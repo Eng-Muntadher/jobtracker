@@ -44,3 +44,33 @@ export function toSnake(obj: UserJs) {
     ])
   );
 }
+
+interface AnyObject {
+  [key: string]: string;
+}
+
+// This function sorts an array of objects based on a key input
+export function sortByKey<T extends AnyObject>(
+  arr: T[],
+  key: string,
+  order: "asc" | "desc" = "asc",
+  isDate: boolean // indicates if the key is of type "date"
+): T[] {
+  return [...arr].sort((a, b) => {
+    let valA: string | number;
+    let valB: string | number;
+
+    if (isDate) {
+      // Convert to timestamp for proper date comparison
+      valA = a[key] ? new Date(a[key]).getTime() : 0;
+      valB = b[key] ? new Date(b[key]).getTime() : 0;
+    } else {
+      valA = a[key] ? String(a[key]).toLowerCase() : "";
+      valB = b[key] ? String(b[key]).toLowerCase() : "";
+    }
+
+    if (valA < valB) return order === "asc" ? -1 : 1;
+    if (valA > valB) return order === "asc" ? 1 : -1;
+    return 0;
+  });
+}

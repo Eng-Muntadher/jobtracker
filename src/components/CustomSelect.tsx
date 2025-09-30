@@ -1,23 +1,42 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+/* This is a reusable custom select element. The state is sets can be
+ a normal local state for any element or a redux state for any slice. in both cases, a state setter function is passed */
+
 interface SelectOptions {
   optionsArray: string[];
-  onChange: (value: string) => void;
+  onChange: (value: unknown) => void;
   addedClasses?: string;
+  reduxUsage?: boolean;
+  reduxActionCreator?: (x: string) => unknown;
+  value?: string;
 }
-function CustomSelect({ optionsArray, addedClasses, onChange }: SelectOptions) {
+function CustomSelect({
+  optionsArray,
+  addedClasses,
+  onChange,
+  reduxUsage = false,
+  reduxActionCreator,
+  value,
+}: SelectOptions) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [statusFilter, setStatusFilter] = useState(optionsArray[0]);
+  const [statusFilter, setStatusFilter] = useState(
+    value ? value : optionsArray[0]
+  );
 
   function handleOpenCloseMenu() {
     setMenuIsOpen((state) => !state);
   }
 
   function handleChangeStatus(item: string) {
-    onChange(item);
+    if (reduxUsage) {
+      onChange?.(reduxActionCreator?.(item));
+    } else {
+      onChange(item);
+    }
     setStatusFilter(item);
     setMenuIsOpen(false);
   }

@@ -1,7 +1,16 @@
 import { Search } from "lucide-react";
 import CustomSelect from "./CustomSelect";
+import { setFilter, setSearch } from "../store/searchFilterSortSlice";
+import { useDispatch } from "react-redux";
+import type { AppDispatch, RootState } from "../store/store";
+import { useSelector } from "react-redux";
 
 function FilterAndSortApplications() {
+  const dispatch = useDispatch<AppDispatch>();
+  const { search, filter } = useSelector(
+    (state: RootState) => state.searchFilterSort
+  );
+
   return (
     <section
       aria-label="Applications filters and actions"
@@ -20,6 +29,8 @@ function FilterAndSortApplications() {
             <input
               aria-label="Search applications"
               type="search"
+              value={search}
+              onChange={(e) => dispatch(setSearch(e.target.value))}
               name="search-applications"
               id="search-applications"
               aria-describedby="search-help"
@@ -37,6 +48,10 @@ function FilterAndSortApplications() {
               "Rejected",
               "Accepted",
             ]}
+            onChange={dispatch}
+            reduxUsage={true}
+            reduxActionCreator={setFilter}
+            value={filter}
           />
         </div>
       </div>

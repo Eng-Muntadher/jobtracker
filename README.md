@@ -31,6 +31,8 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - Full authentication with Supabase
 - Notifications using React Toaster
 - Create, Read and delete job applications
+- State management with Redux
+- Sort, filter and search job applications
 
 ---
 
@@ -40,7 +42,6 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - User dashboard with job statistics
 - User profile page (edit/delete personal info and profile image)
 - AI chat bot for better UX
-- State management with Redux
 
 ---
 

@@ -1,10 +1,65 @@
-import { ArrowUpDown } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import { UseFetchApplications } from "../hooks/useFetchApplications";
 import TableRow from "./TableRow";
 import Spinner from "./Spinner";
+import { useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../store/store";
+import { useDispatch } from "react-redux";
+import {
+  setSortOrder,
+  setSortBy,
+  type SortByOptions,
+} from "../store/searchFilterSortSlice";
+import { sortByKey } from "../helpers";
 
 function Table() {
+  const dispatch = useDispatch<AppDispatch>();
+
   const { data, isPending } = UseFetchApplications();
+  const { search, filter, sortOrder, sortBy } = useSelector(
+    (state: RootState) => state.searchFilterSort
+  );
+
+  // STEP 1) filter by search
+  const filteredJobsBySearch = data?.filter(
+    (job) =>
+      job.job_title.toLowerCase().includes(search.toLowerCase()) ||
+      job.company_name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  // STEP 2) filter by the status filter
+  const filteredJobsBySelectFilter =
+    filter === "All"
+      ? filteredJobsBySearch
+      : filteredJobsBySearch?.filter(
+          (job) => job.application_status === filter
+        );
+
+  // indicates if the sort is based on a key of type (date)
+  const isDate = sortBy === "application_date";
+
+  // STEP 3) sort by (company, title, status or date)
+  const sortedApplications = sortByKey(
+    filteredJobsBySelectFilter || [],
+    sortBy || "",
+    sortOrder || "asc",
+    isDate
+  );
+
+  // handles the sort and sortBy state in the Redux store
+  function handleClick(sortOptionName: SortByOptions) {
+    if (sortBy === sortOptionName) {
+      if (sortOrder === "asc") {
+        dispatch(setSortOrder("desc"));
+      } else if (sortOrder === "desc") {
+        dispatch(setSortOrder(null));
+        dispatch(setSortBy(null));
+      }
+    } else {
+      dispatch(setSortBy(sortOptionName));
+      dispatch(setSortOrder("asc"));
+    }
+  }
 
   if (isPending) return <Spinner />;
 
@@ -27,12 +82,21 @@ function Table() {
                 aria-sort="none"
               >
                 <button
-                  aria-label="sort by company"
+                  aria-label="Company/sort by company"
                   className="flex items-center gap-2 cursor-pointer"
+                  onClick={() => handleClick("company_name")}
                 >
                   <span>Company</span>
                   <span aria-hidden="true">
-                    <ArrowUpDown size={16} />
+                    {sortBy === "company_name" ? (
+                      sortOrder === "asc" ? (
+                        <ArrowUp size={16} />
+                      ) : (
+                        <ArrowDown size={16} />
+                      )
+                    ) : (
+                      <ArrowUpDown size={16} />
+                    )}
                   </span>
                 </button>
               </th>
@@ -45,10 +109,19 @@ function Table() {
                 <button
                   aria-label="sort by job title"
                   className="flex items-center gap-2 cursor-pointer"
+                  onClick={() => handleClick("job_title")}
                 >
                   <span>Job Title</span>
                   <span aria-hidden="true">
-                    <ArrowUpDown size={16} />
+                    {sortBy === "job_title" ? (
+                      sortOrder === "asc" ? (
+                        <ArrowUp size={16} />
+                      ) : (
+                        <ArrowDown size={16} />
+                      )
+                    ) : (
+                      <ArrowUpDown size={16} />
+                    )}
                   </span>
                 </button>
               </th>
@@ -61,10 +134,19 @@ function Table() {
                 <button
                   aria-label="sort by status"
                   className="flex items-center gap-2 cursor-pointer"
+                  onClick={() => handleClick("application_status")}
                 >
                   <span>Status</span>
                   <span aria-hidden="true">
-                    <ArrowUpDown size={16} />
+                    {sortBy === "application_status" ? (
+                      sortOrder === "asc" ? (
+                        <ArrowUp size={16} />
+                      ) : (
+                        <ArrowDown size={16} />
+                      )
+                    ) : (
+                      <ArrowUpDown size={16} />
+                    )}
                   </span>
                 </button>
               </th>
@@ -77,10 +159,19 @@ function Table() {
                 <button
                   aria-label="sort by Date"
                   className="flex items-center gap-2 cursor-pointer"
+                  onClick={() => handleClick("application_date")}
                 >
                   <span>Date Applied</span>
                   <span aria-hidden="true">
-                    <ArrowUpDown size={16} />
+                    {sortBy === "application_date" ? (
+                      sortOrder === "asc" ? (
+                        <ArrowUp size={16} />
+                      ) : (
+                        <ArrowDown size={16} />
+                      )
+                    ) : (
+                      <ArrowUpDown size={16} />
+                    )}
                   </span>
                 </button>
               </th>
@@ -95,7 +186,7 @@ function Table() {
           </thead>
 
           <tbody className="block w-full">
-            {data?.map((application) => (
+            {sortedApplications?.map((application) => (
               <TableRow
                 key={application.id}
                 id={application.id}
