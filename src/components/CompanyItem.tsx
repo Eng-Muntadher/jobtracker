@@ -3,10 +3,8 @@ interface CompanyItemProps {
   company: string;
   role: string;
   status: "Applied" | "Interviewing" | "Rejected" | "Accepted";
-  date: string; // 'change later to "Date"'
+  date: string;
 }
-
-function setDate() {}
 
 function CompanyItem({ index, company, role, status, date }: CompanyItemProps) {
   return (

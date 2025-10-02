@@ -1,4 +1,9 @@
-function StatsTips() {
+interface StatsTipsProps {
+  // this calculation is done elsewhere by a relative child component
+  recentApplications: number;
+}
+
+function StatsTips({ recentApplications }: StatsTipsProps) {
   return (
     <section className="custom-border" aria-labelledby="tips-heading">
       <h6
@@ -14,9 +19,9 @@ function StatsTips() {
       <p
         className={`text-(--text-color) text-sm p-4 bg-(--tipsCard-yellow) mb-3`}
       >
-        <strong className="font-bold">Stay active:</strong> You haven&apos;t
-        submitted any applications in the last 30 days. Consistency is key to a
-        successful job search.
+        <strong className="font-bold">Stay active:</strong> You have submitted{" "}
+        {recentApplications} applications in the last 30 days. Consistency is
+        key to a successful job search.
       </p>
 
       <p className={`text-(--text-color) text-sm p-4 bg-(--tipsCard-green)`}>

@@ -6,7 +6,18 @@ import {
   Tooltip,
   PieChart,
 } from "recharts";
-function StatsPieChart() {
+import { calculateStats, type UserDb } from "../helpers";
+
+interface StatsPieChartProps {
+  jobApplications: UserDb[] | undefined;
+}
+function StatsPieChart({ jobApplications }: StatsPieChartProps) {
+  const { accepted, applied, interviewing, rejected } =
+    calculateStats(jobApplications);
+
+  /* We could memoize the above calculation here also, but since
+   this component also almost NEVER re-renders, it's not an obligation. */
+
   return (
     <section className="custom-border" aria-labelledby="pie-chart-title">
       <h4
@@ -23,20 +34,20 @@ function StatsPieChart() {
         <PieChart
           data={[
             {
-              name: "Rejected",
-              value: 1,
+              name: "Accepted",
+              value: accepted,
             },
             {
               name: "Interviewing",
-              value: 2,
-            },
-            {
-              name: "Offers",
-              value: 1,
+              value: interviewing,
             },
             {
               name: "Applied",
-              value: 1,
+              value: applied,
+            },
+            {
+              name: "Rejected",
+              value: rejected,
             },
           ]}
           height={400}
@@ -57,16 +68,15 @@ function StatsPieChart() {
           </Pie>
           <Tooltip />
           <Legend />
-          {/* <RechartsHookInspector /> */}
         </PieChart>
       </ResponsiveContainer>
 
       {/* Summerize the stats for screen readers */}
       <ul className="sr-only">
-        <li>Rejected: 1</li>
-        <li>Interviewing: 2</li>
-        <li>Offers: 1</li>
-        <li>Applied: 1</li>
+        <li>Accepted: {accepted}</li>
+        <li>Interviewing: {interviewing}</li>
+        <li>Applied: {applied}</li>
+        <li>Rejected: {rejected}</li>
       </ul>
     </section>
   );

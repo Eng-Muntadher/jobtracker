@@ -7,31 +7,15 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { prepareChartData, type UserDb } from "../helpers";
+import dayjs from "dayjs";
 
-const data = [
-  {
-    name: "Jan 5",
-    Applications: 4,
-  },
-  {
-    name: "Jan 10",
-    Applications: 2,
-  },
-  {
-    name: "Jan 15",
-    Applications: 1,
-  },
-  {
-    name: "Jan 18",
-    Applications: 1,
-  },
-  {
-    name: "Jan 20",
-    Applications: 6,
-  },
-];
-
-function ResponsiveLineChart() {
+interface ResponsiveLineChartProps {
+  jobApplications: UserDb[] | undefined;
+}
+function ResponsiveLineChart({ jobApplications }: ResponsiveLineChartProps) {
+  const data = jobApplications ? prepareChartData(jobApplications) : [];
+  console.log(data);
   return (
     <section className="my-6 custom-border" aria-labelledby="line-chart-title">
       <h5
@@ -44,21 +28,28 @@ function ResponsiveLineChart() {
         Visual breakdown of your application statuses
       </p>
 
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart height={250} data={data}>
-          <XAxis dataKey="name" />
+      <ResponsiveContainer width="100%" height={250}>
+        <LineChart data={data}>
+          <XAxis
+            dataKey="date"
+            tickFormatter={(date: string) => dayjs(date).format("MMM D")} // Sep 12
+          />
           <YAxis />
-          <Tooltip />
+          <Tooltip
+            labelFormatter={(date: string) =>
+              dayjs(date).format("MMMM D, YYYY")
+            } // full date (September 12, 2025)
+          />
           <Legend />
-          <Line type="monotone" dataKey="Applications" stroke="#8884d8" />
+          <Line type="monotone" dataKey="applications" stroke="#8884d8" />
         </LineChart>
       </ResponsiveContainer>
 
       {/* Summerize stats for screen readers */}
       <ul className="sr-only">
         {data.map((point) => (
-          <li key={point.name}>
-            {point.name}: {point.Applications} applications
+          <li key={point.date}>
+            {point.date}: {point.applications} applications
           </li>
         ))}
       </ul>
