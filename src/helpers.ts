@@ -172,3 +172,8 @@ export function prepareChartData(applications: UserDb[]): ChartPoint[] {
     .map(([date, count]) => ({ date, applications: count }))
     .sort((a, b) => dayjs(a.date).unix() - dayjs(b.date).unix()); // sort by time
 }
+
+export function getCurrentTime(): string {
+  const now = new Date();
+  return now.toLocaleTimeString("en-US", { hour12: true });
+}

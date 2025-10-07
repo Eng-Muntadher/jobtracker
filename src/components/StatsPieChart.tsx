@@ -61,10 +61,10 @@ function StatsPieChart({ jobApplications }: StatsPieChartProps) {
             onMouseLeave={function Wde() {}}
             outerRadius={80}
           >
-            <Cell fill="#EF4444" />
             <Cell fill="#10B981" />
             <Cell fill="#FACC15" />
             <Cell fill="#3B82F6" />
+            <Cell fill="#EF4444" />
           </Pie>
           <Tooltip />
           <Legend />

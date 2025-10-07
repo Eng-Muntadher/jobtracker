@@ -5,6 +5,7 @@ import {
   login as loginApi,
   type loginArguments,
 } from "../servises/UserApi";
+import { toast } from "react-hot-toast";
 
 type LoginResult = Awaited<ReturnType<typeof login>>;
 
@@ -18,7 +19,12 @@ export function useLogin() {
   >({
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: () => navigate("/"),
-    onError: (error) => console.log(error),
+    onError: (error) => {
+      console.log(error);
+      toast.error(
+        "Please make sure your email and password are correct or check your connection"
+      );
+    },
   });
   return { login, isPending };
 }

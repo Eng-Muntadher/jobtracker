@@ -1,9 +1,29 @@
-import { Bot, Send } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import { Bot } from "lucide-react";
+import type { RootState } from "../store/store";
 import QuickPrompts from "./QuickPrompts";
-import Input from "./Input";
 import AiBotImage from "../images/AIBot.svg";
+import UserImage from "../images/userImg.png";
+import ReactMarkdown from "react-markdown";
+import AichatForm from "./AichatForm";
+import Prompt from "./Prompt";
 
 function AiChatBox() {
+  // The AI conversation is stored in Redux state for better UX
+  const { messages, initialAiMessageTime } = useSelector(
+    (state: RootState) => state.aiChat
+  );
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to the bottom whenever messages change
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   return (
     <section
       aria-labelledby="chat-section-heading"
@@ -17,55 +37,54 @@ function AiChatBox() {
       </h3>
 
       <div
+        ref={containerRef}
         role="log"
         aria-live="polite"
-        // make sure new chat messages are announced properly by screen readers.
+        // makes sure new chat messages are announced properly by screen readers.
         aria-relevant="additions"
         aria-atomic="false"
         aria-label="Chat conversation"
-        className="h-[332px] custom-border-no-padding p-4"
+        className="h-[332px] overflow-y-auto custom-border-no-padding p-4 flex flex-col gap-6 scroll-smooth relative"
       >
-        <div
-          role="article"
-          aria-labelledby="ai-message-1"
-          className="flex items-start gap-3 "
-        >
-          <img src={AiBotImage} alt="AI Assistant image" />
-          <div className="bg-[#ECECF0] p-3 rounded-[0.625rem] w-md">
-            <p className="mb-1 text-sm" id="ai-message-1">
-              Hello! I&apos;m your AI job search assistant. I can help analyze
+        <Prompt
+          role="ai"
+          text="Hello! I'm your AI job search assistant. I can help analyze
               your applications, provide insights, and suggest improvements to
-              your job search strategy. What would you like to know?
-            </p>
-            <time dateTime="23:29:43" className="text-xs opacity-70">
-              11:29:43 PM
-            </time>
-          </div>
-        </div>
+              your job search strategy. What would you like to know?"
+          imageSrc={AiBotImage}
+          altText="AI Assistant image"
+          time={initialAiMessageTime}
+          ariaLabelledby="ai-initial-message"
+        />
+
+        {/* This mapping displays all messages stored in Redux store based on the role*/}
+        {messages.map((msg, index) =>
+          msg.role === "assistant" ? (
+            <Prompt
+              role="ai"
+              key={index + 1}
+              text={msg.content}
+              time={msg.time}
+              imageSrc={AiBotImage}
+              altText="AI Assistant image"
+              ariaLabelledby={`ai-respond-to-message-${index - 1}`}
+            />
+          ) : (
+            <Prompt
+              key={index + 1}
+              role="user"
+              text={msg.content}
+              time={msg.time}
+              imageSrc={UserImage}
+              altText="User image"
+              ariaLabelledby={`user-message-${index}`}
+            />
+          )
+        )}
       </div>
 
       <QuickPrompts />
-
-      <form className="flex justify-between gap-2">
-        <label htmlFor="AI-Chat" className="sr-only">
-          Write a message to the AI assistant
-        </label>
-        <Input
-          type="text"
-          id="AI-Chat"
-          name="AI-Chat"
-          required={true}
-          placeholder="Ask me about your job search..."
-          addedClasses="grow"
-          srOnlyInfo="Write a message to the AI assistant"
-        />
-        <button
-          className="p-2.5 bg-(--bg-color-2) opacity-50 rounded-lg cursor-pointer focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100"
-          aria-label="Send a message to the AI assistant"
-        >
-          <Send size={16} color="white" aria-hidden="true" />
-        </button>
-      </form>
+      <AichatForm />
     </section>
   );
 }

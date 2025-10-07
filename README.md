@@ -17,6 +17,7 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - Lucide Icons
 - Day.js
 - Supabase
+- React Markdown
 
 ---
 
@@ -29,12 +30,13 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - Static one-Application page (fully responsive)
 - Static Stats page (fully responsive)
 - Static user profile page (fully responsive)
-- Full authentication with Supabase
+- Full authentication and authorization with Supabase
 - Notifications using React Toaster
 - Create, Read and delete job applications
 - State management with Redux
 - Sort, filter and search job applications
 - User dashboard with job statistics
+- AI chat bot for better UX
 
 ---
 
@@ -42,7 +44,6 @@ A portfolio project for tracking a user's job applications with full Authenticat
 
 - Edit operation for job applications
 - User profile page (edit/delete personal info and profile image)
-- AI chat bot for better UX
 
 ---
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import { useLogin } from "../hooks/useLogin";
+import Spinner from "./Spinner";
 
 function SignInForm() {
   const [email, setEmail] = useState("");
@@ -23,9 +24,10 @@ function SignInForm() {
 
   return (
     <div className="mx-4">
-      <div className="mt-20 bg-(--bg-color-1) border rounded-[0.875rem] container mx-auto max-w-md border-[rgba(0,0,0,0.1)] p-6">
+      <div className="mt-12 bg-(--bg-color-1) border rounded-[0.875rem] container mx-auto max-w-md border-[rgba(0,0,0,0.1)] p-6">
         <section className="flex flex-col text-center">
           <div>
+            {isPending && <Spinner />}
             <h1 className="text-(--text-color) font-semibold mb-1.5">
               Welcome Back
             </h1>
