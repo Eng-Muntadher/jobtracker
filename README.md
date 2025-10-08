@@ -32,7 +32,7 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - Static user profile page (fully responsive)
 - Full authentication and authorization with Supabase
 - Notifications using React Toaster
-- Create, Read and delete job applications
+- CRUD operations for job applications
 - State management with Redux
 - Sort, filter and search job applications
 - User dashboard with job statistics
@@ -42,7 +42,6 @@ A portfolio project for tracking a user's job applications with full Authenticat
 
 ## Planned / Future Features
 
-- Edit operation for job applications
 - User profile page (edit/delete personal info and profile image)
 
 ---

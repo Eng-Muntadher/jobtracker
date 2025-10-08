@@ -4,9 +4,15 @@ import { useEffect, useRef, useState } from "react";
 /* This is a reusable custom select element. The state is sets can be
  a normal local state for any element or a redux state for any slice. in both cases, a state setter function is passed */
 
+type func1 = (value: unknown) => void;
+type func2 = (name: string, value: string) => void;
+
 interface SelectOptions {
   optionsArray: string[];
-  onChange: (value: unknown) => void;
+  onChange: func1 | func2;
+
+  name?: string;
+  specialCase?: boolean;
   addedClasses?: string;
   reduxUsage?: boolean;
   reduxActionCreator?: (x: string) => unknown;
@@ -19,6 +25,8 @@ function CustomSelect({
   reduxUsage = false,
   reduxActionCreator,
   value,
+  name,
+  specialCase = false,
 }: SelectOptions) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -33,9 +41,13 @@ function CustomSelect({
 
   function handleChangeStatus(item: string) {
     if (reduxUsage) {
-      onChange?.(reduxActionCreator?.(item));
+      (onChange as func1)?.(reduxActionCreator?.(item));
     } else {
-      onChange(item);
+      if (specialCase) {
+        (onChange as func2)(name || "", item);
+      } else {
+        (onChange as func1)(item);
+      }
     }
     setStatusFilter(item);
     setMenuIsOpen(false);
@@ -70,7 +82,7 @@ function CustomSelect({
         aria-haspopup="listbox"
         aria-expanded={menuIsOpen}
         ref={buttonRef}
-        className={`bg-(--input-color) rounded-lg px-3 py-2 text-sm focus:outline-none  flex justify-between items-center cursor-pointer focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100 ${addedClasses}`}
+        className={`bg-(--input-color) rounded-lg px-3 py-2 text-sm focus:outline-none flex justify-between items-center cursor-pointer focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100 ${addedClasses}`}
         onClick={handleOpenCloseMenu}
       >
         <span>{statusFilter}</span>

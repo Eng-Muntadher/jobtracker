@@ -1,10 +1,64 @@
 import { ExternalLink, LinkIcon } from "lucide-react";
+import Input from "./Input";
 
 interface JobLinksCardProps {
   jobPosting: string;
   contact: string;
+  isEditing: boolean;
+  handleChange: (name: string, value: string) => void;
 }
-function JobLinksCard({ jobPosting, contact }: JobLinksCardProps) {
+function JobLinksCard({
+  jobPosting,
+  contact,
+  isEditing,
+  handleChange,
+}: JobLinksCardProps) {
+  if (isEditing) {
+    return (
+      <fieldset className="custom-border">
+        <h5 className="flex items-center gap-2 mb-6">
+          <span aria-hidden="true">
+            <LinkIcon size={20} />
+          </span>
+          <span className="text-(--text-color)">Links</span>
+        </h5>
+
+        <label
+          htmlFor="job-posting"
+          className="text-(--text-color) font-semibold text-sm mb-2 block"
+        >
+          Job Posting
+        </label>
+        <Input
+          type="text"
+          id="job-posting"
+          name="job-posting"
+          defaultValue={jobPosting}
+          addedClasses="text-sm w-full mb-4"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleChange("jobPosting", e.target.value)
+          }
+        />
+
+        <label
+          htmlFor="contact"
+          className="text-(--text-color) font-semibold text-sm mb-2 block"
+        >
+          Contact/Recruiter
+        </label>
+        <Input
+          type="text"
+          id="contact"
+          name="contact"
+          defaultValue={contact}
+          addedClasses="text-sm w-full mb-2"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleChange("contact", e.target.value)
+          }
+        />
+      </fieldset>
+    );
+  }
   return (
     <section className="custom-border">
       <h5 className="flex items-center gap-2 mb-6">

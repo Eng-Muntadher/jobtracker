@@ -1,4 +1,5 @@
 import { Calendar, DollarSign, MapPin } from "lucide-react";
+import Input from "./Input";
 
 interface JobInfoCardProps {
   companyName: string;
@@ -7,6 +8,8 @@ interface JobInfoCardProps {
   applicationDate: string;
   applicationStatus: string;
   salary: string;
+  isEditing: boolean;
+  handleChange: (name: string, value: string) => void;
 }
 
 function JobInfoCard({
@@ -16,9 +19,117 @@ function JobInfoCard({
   applicationDate,
   applicationStatus,
   salary,
+  isEditing,
+  handleChange,
 }: JobInfoCardProps) {
   const cssTextColor = `var(--${applicationStatus.toLowerCase()}-status-color)`;
   const cssBgColor = `var(--${applicationStatus.toLowerCase()}-status-bg)`;
+  if (isEditing)
+    return (
+      <fieldset className="custom-border">
+        <div className="mb-8">
+          <div className="flex flex-col w-full gap-4">
+            <label htmlFor="company-name" className="sr-only">
+              Company Name
+            </label>
+            <Input
+              type="text"
+              id="company-name"
+              name="company-name"
+              defaultValue={companyName}
+              addedClasses="font-bold w-full text-sm"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange("companyName", e.target.value)
+              }
+              required={true}
+            />
+
+            <label htmlFor="job-title" className="sr-only">
+              Job title
+            </label>
+            <Input
+              type="text"
+              id="job-title"
+              name="job-title"
+              defaultValue={jobTitle}
+              addedClasses="w-[228px] w-full text-sm"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange("jobTitle", e.target.value)
+              }
+              required={true}
+            />
+          </div>
+        </div>
+
+        <div>
+          <div className="flex gap-6 mb-4 max-md:flex-col max-md:gap-4">
+            <div className="flex gap-2 text-(--text-color-secondary) items-center w-1/2 max-md:w-full">
+              <span aria-hidden="true">
+                <MapPin size={16} />
+              </span>
+
+              <label htmlFor="job-location" className="sr-only">
+                Job location
+              </label>
+              <Input
+                type="text"
+                id="job-location"
+                name="job-location"
+                defaultValue={location}
+                addedClasses="text-sm grow"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleChange("location", e.target.value)
+                }
+                required={true}
+              />
+            </div>
+
+            <div className="flex gap-2 text-(--text-color-secondary) items-center w-1/2 max-md:w-full">
+              <span aria-hidden="true">
+                <Calendar size={16} />
+              </span>
+
+              <label htmlFor="date-applied" className="sr-only">
+                Date applied
+              </label>
+              <Input
+                type="date"
+                id="date-applied"
+                name="date-applied"
+                defaultValue={applicationDate}
+                addedClasses="grow text-sm"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleChange("applicationDate", e.target.value)
+                }
+                required={true}
+              />
+            </div>
+          </div>
+
+          <div className="flex gap-2 text-(--text-color-secondary) items-center">
+            <span aria-hidden="true">
+              <DollarSign size={16} />
+            </span>
+
+            <label htmlFor="salary" className="sr-only">
+              Salary
+            </label>
+            <Input
+              type="text"
+              id="salary"
+              name="salary"
+              defaultValue={salary}
+              addedClasses="text-sm grow"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange("salary", e.target.value)
+              }
+              required={true}
+            />
+          </div>
+        </div>
+      </fieldset>
+    );
+
   return (
     <section aria-labelledby="job-details" className="custom-border">
       <div className="flex justify-between mb-[1.85rem]">

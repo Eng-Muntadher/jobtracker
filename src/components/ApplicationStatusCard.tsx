@@ -1,8 +1,31 @@
+import CustomSelect from "./CustomSelect";
+
 interface jobStatusCardProps {
   applicationStatus: string;
+  isEditing: boolean;
+  handleChange: (name: string, value: string) => void;
 }
 
-function ApplicationStatusCard({ applicationStatus }: jobStatusCardProps) {
+function ApplicationStatusCard({
+  applicationStatus,
+  isEditing,
+  handleChange,
+}: jobStatusCardProps) {
+  if (isEditing) {
+    return (
+      <fieldset className="custom-border h-fit">
+        <h5 className="text-(--text-color) mb-7">Application Status</h5>
+        <CustomSelect
+          optionsArray={["Applied", "Interviewing", "Rejected", "Accepted"]}
+          addedClasses="w-full"
+          name="applicationStatus"
+          specialCase={true}
+          value={applicationStatus}
+          onChange={handleChange}
+        />
+      </fieldset>
+    );
+  }
   const cssTextColor = `var(--${applicationStatus.toLowerCase()}-status-color)`;
   const cssBgColor = `var(--${applicationStatus.toLowerCase()}-status-bg)`;
   return (

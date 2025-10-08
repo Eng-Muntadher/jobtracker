@@ -15,7 +15,6 @@ interface ResponsiveLineChartProps {
 }
 function ResponsiveLineChart({ jobApplications }: ResponsiveLineChartProps) {
   const data = jobApplications ? prepareChartData(jobApplications) : [];
-  console.log(data);
   return (
     <section className="my-6 custom-border" aria-labelledby="line-chart-title">
       <h5

@@ -15,12 +15,12 @@ function QuickActionBtn({
   icon: Icon = ExternalLink,
   href = "",
 }: BtnProps) {
+  const tailwindClasses =
+    "px-[0.8rem] py-2 border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] flex gap-4 text-(--text-color) items-center hover:bg-(--accent) cursor-pointer";
+
   if (!link) {
     return (
-      <button
-        className="px-[0.8rem] py-2 border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] flex gap-4 text-(--text-color) items-center"
-        onClick={eventHandler}
-      >
+      <button className={tailwindClasses} onClick={eventHandler}>
         <span aria-hidden="true">
           <Icon size={16} />
         </span>
@@ -31,7 +31,7 @@ function QuickActionBtn({
 
   return (
     <a
-      className="px-[0.8rem] py-2 border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] flex gap-4 text-(--text-color) items-center"
+      className={tailwindClasses}
       aria-describedby="new-window-note"
       rel="noopener noreferrer external"
       href={href}

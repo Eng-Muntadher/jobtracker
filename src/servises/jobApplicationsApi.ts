@@ -1,4 +1,4 @@
-import { toSnake, type UserJs } from "../helpers";
+import { toSnake, type UserDb, type UserJs } from "../helpers";
 import supabase from "./supabase";
 
 export async function uploadApplication(data: UserJs) {
@@ -43,4 +43,28 @@ export async function deleteApplication(id: number) {
     .eq("id", id);
 
   if (error) throw new Error(error.message);
+}
+
+export async function updateApplication(data: UserJs, id: number) {
+  // This is a final safe check just in case the interview date is "". (Supabase would complain!)
+  let newData;
+  if (data.interviewDate === "") {
+    newData = { ...data, interviewDate: null };
+  }
+
+  /* since it's a convention to use snake case for the DB
+   and camel case for TS/JS code, we convert between
+    the two when reading/writing to the DB*/
+  const snakeData = toSnake(newData || data);
+
+  const { error } = await supabase
+    .from("job_applications")
+    .update(snakeData)
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Application could not be updated");
+  }
 }

@@ -2,7 +2,8 @@ interface InputProps {
   type: string;
   id: string;
   name: string;
-  value: string;
+  value?: string;
+  defaultValue?: string;
   onChange:
     | ((e: React.ChangeEvent<HTMLInputElement>) => void)
     | ((e: React.ChangeEvent<HTMLTextAreaElement>) => void);
@@ -26,6 +27,7 @@ function Input({
   disabled = false,
   autoComplete,
   onChange,
+  defaultValue,
 }: InputProps) {
   const styles =
     "bg-(--input-color) rounded-lg px-3 py-2 focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100";
@@ -37,6 +39,7 @@ function Input({
           id={id}
           name={name}
           value={value}
+          defaultValue={defaultValue}
           onChange={onChange as React.ChangeEventHandler<HTMLTextAreaElement>} // cast needed
           placeholder={placeholder}
           required={required}
@@ -49,6 +52,7 @@ function Input({
           id={id}
           name={name}
           value={value}
+          defaultValue={defaultValue}
           onChange={onChange as React.ChangeEventHandler<HTMLInputElement>} // optional cast
           disabled={disabled}
           placeholder={placeholder}

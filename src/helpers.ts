@@ -18,12 +18,12 @@ export interface UserDb {
   application_date: string;
   job_details?: string;
   job_notes?: string;
-  interview_date?: string;
+  interview_date?: string | null;
 }
 
 // JS object (camelCase)
 export interface UserJs {
-  user_id: string;
+  user_id?: string;
   companyName: string;
   jobTitle: string;
   applicationStatus: string;
@@ -34,7 +34,7 @@ export interface UserJs {
   salary: string;
   jobDetails: string;
   jobNotes: string;
-  interviewDate?: string;
+  interviewDate?: string | null;
 }
 
 // Convert camel case to snake case when uploading data for best practise

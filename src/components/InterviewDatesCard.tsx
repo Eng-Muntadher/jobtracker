@@ -1,13 +1,43 @@
 import { Calendar } from "lucide-react";
+import Input from "./Input";
 
 interface jobInterviewDatesCard {
   interviewDate: string;
+  isEditing: boolean;
+  handleChange: (name: string, value: string) => void;
 }
 
-function InterviewDatesCard({ interviewDate }: jobInterviewDatesCard) {
+function InterviewDatesCard({
+  interviewDate,
+  isEditing,
+  handleChange,
+}: jobInterviewDatesCard) {
+  if (isEditing) {
+    return (
+      <fieldset className="custom-border h-fit">
+        <label
+          htmlFor="interview-date"
+          className="text-(--text-color) mb-7 block"
+        >
+          Interview Date
+        </label>
+        <Input
+          type="date"
+          id="interview-date"
+          name="interview-date"
+          defaultValue={interviewDate || ""}
+          addedClasses="text-sm w-full"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            handleChange("interviewDate", e.target.value);
+            console.log(e.target.value);
+          }}
+        />
+      </fieldset>
+    );
+  }
   return (
     <section className="custom-border h-fit">
-      <h5 className="text-(--text-color) mb-7">Interview Dates</h5>
+      <h5 className="text-(--text-color) mb-7">Interview Date</h5>
       <div className="flex items-center gap-2 mb-2 text-sm">
         {interviewDate ? (
           <>
