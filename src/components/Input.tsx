@@ -40,7 +40,7 @@ function Input({
           name={name}
           value={value}
           defaultValue={defaultValue}
-          onChange={onChange as React.ChangeEventHandler<HTMLTextAreaElement>} // cast needed
+          onChange={onChange as React.ChangeEventHandler<HTMLTextAreaElement>}
           placeholder={placeholder}
           required={required}
           aria-describedby={srOnlyInfo ? `${id}-help` : undefined}
@@ -53,7 +53,7 @@ function Input({
           name={name}
           value={value}
           defaultValue={defaultValue}
-          onChange={onChange as React.ChangeEventHandler<HTMLInputElement>} // optional cast
+          onChange={onChange as React.ChangeEventHandler<HTMLInputElement>}
           disabled={disabled}
           placeholder={placeholder}
           required={required}

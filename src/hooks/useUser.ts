@@ -27,3 +27,12 @@ export function useUser() {
 
   return query; // contains { data, isLoading, isError, error }
 }
+
+export async function signOut() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error("Sign-out failed:", error.message);
+    return;
+  }
+}

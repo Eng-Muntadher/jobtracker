@@ -11,8 +11,8 @@ interface JobDescriptionCardProps {
 }
 
 function JobDescriptionCard({
-  icon: Icon,
   heading,
+  icon: Icon,
   jobDetails,
   jobNotes,
   isEditing,
@@ -52,7 +52,7 @@ function JobDescriptionCard({
         <span>{heading}</span>
       </h4>
       <p className="text-(--text-color-secondary)">
-        {/* Return only what was passed as a prop wich should be either one  */}
+        {/* Return only what was passed as a prop wich is either one  */}
         {jobDetails ? jobDetails : jobNotes}
       </p>
     </section>

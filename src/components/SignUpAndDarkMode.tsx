@@ -2,7 +2,7 @@ import { Moon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useUser } from "../hooks/useUser";
 import Button from "./Button";
-import UserImage from "../images/userImg.png";
+import guestImage from "../images/guest.jpeg";
 
 function SignUpAndDarkMode() {
   const { data: user } = useUser();
@@ -23,7 +23,13 @@ function SignUpAndDarkMode() {
         </Button>
       ) : (
         <Link to="user-profile">
-          <img src={UserImage} height={32} width={32} alt="Profile image" />
+          <img
+            src={user.user_metadata.publicUrl || guestImage}
+            height={33}
+            width={33}
+            alt="Profile image"
+            className="object-cover w-[33px] h-[33px] rounded-full"
+          />
         </Link>
       )}
     </div>

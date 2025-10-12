@@ -28,7 +28,13 @@ function Prompt({
       aria-labelledby={ariaLabelledby}
       className={tailwindClasses}
     >
-      <img src={imageSrc} alt={altText} height={33} width={33} />
+      <img
+        src={imageSrc}
+        alt={altText}
+        height={33}
+        width={33}
+        className="object-cover w-[33px] h-[33px] rounded-full flex-shrink-0"
+      />
       <div className="bg-[#ECECF0] p-3 rounded-[0.625rem] w-md">
         <div className="mb-1 text-sm" id={ariaLabelledby}>
           {<ReactMarkdown>{text}</ReactMarkdown>}

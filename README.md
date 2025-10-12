@@ -37,12 +37,13 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - Sort, filter and search job applications
 - User dashboard with job statistics
 - AI chat bot for better UX
+- User profile page (edit/delete personal info and profile image)
 
 ---
 
 ## Planned / Future Features
 
-- User profile page (edit/delete personal info and profile image)
+- Sign up for new users
 
 ---
 

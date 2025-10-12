@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { Bot } from "lucide-react";
+import { useUser } from "../hooks/useUser";
 import type { RootState } from "../store/store";
 import QuickPrompts from "./QuickPrompts";
 import AiBotImage from "../images/AIBot.svg";
-import UserImage from "../images/userImg.png";
-import ReactMarkdown from "react-markdown";
+import guestImage from "../images/guest.jpeg";
 import AichatForm from "./AichatForm";
 import Prompt from "./Prompt";
 
@@ -14,6 +14,8 @@ function AiChatBox() {
   const { messages, initialAiMessageTime } = useSelector(
     (state: RootState) => state.aiChat
   );
+
+  const { data: user } = useUser();
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -75,7 +77,7 @@ function AiChatBox() {
               role="user"
               text={msg.content}
               time={msg.time}
-              imageSrc={UserImage}
+              imageSrc={user?.user_metadata.publicUrl || guestImage}
               altText="User image"
               ariaLabelledby={`user-message-${index}`}
             />
