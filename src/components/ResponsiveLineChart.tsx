@@ -17,12 +17,12 @@ function ResponsiveLineChart({ jobApplications }: ResponsiveLineChartProps) {
   const data = jobApplications ? prepareChartData(jobApplications) : [];
   return (
     <section className="my-6 custom-border" aria-labelledby="line-chart-title">
-      <h5
+      <h2
         className="text-(--text-color) font-semibold mb-1.5"
         id="line-chart-title"
       >
         Application Status Distribution
-      </h5>
+      </h2>
       <p className="text-(--text-color-secondary) mb-6">
         Visual breakdown of your application statuses
       </p>

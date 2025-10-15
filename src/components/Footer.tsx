@@ -1,10 +1,16 @@
 import { ExternalLink, Github, Mail } from "lucide-react";
+import { useMyOwnInfo } from "../hooks/useMyOwnInfo";
 
 function Footer() {
+  const { data, isPending } = useMyOwnInfo();
+  const myEmail = data?.at(0)?.value;
+  const myPortfolio = data?.at(1)?.value;
+  const myGitHub = data?.at(2)?.value;
+
   const year = new Date().getFullYear();
 
   return (
-    <footer role="content-info" className="container mx-auto">
+    <footer className="container mx-auto">
       <div className="container grid items-center max-w-6xl grid-cols-3 mx-auto max-md:grid-cols-1">
         <div className="max-xl:ml-4 max-md:ml-0">
           <h3 className="flex items-center gap-2 mb-4 text-(--text-color) text-lg max-md:justify-center">
@@ -14,12 +20,14 @@ function Footer() {
             Contact Me
           </h3>
           <a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-(--text-color-secondary) hover:text-(--text-color) block max-md:mb-8 max-md:text-center"
+            className="text-(--text-color-secondary) flex items-center gap-1 text-center hover:text-(--text-color) max-md:mb-8 max-md:justify-center"
+            href={`mailto:${myEmail}`}
+            aria-label="Send me an email me"
           >
-            email@example.com
+            My Email
+            <span aria-hidden="true">
+              <ExternalLink size={16} />
+            </span>
           </a>
         </div>
 
@@ -32,8 +40,9 @@ function Footer() {
           </h3>
           <a
             className="text-(--text-color-secondary) flex items-center gap-1 text-center justify-center hover:text-(--text-color) max-md:mb-8"
-            href=""
+            href={myPortfolio}
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="View portfolio (opens in new window)"
           >
             My Portfolio
@@ -52,8 +61,9 @@ function Footer() {
           </h3>
           <a
             className="text-(--text-color-secondary) flex items-center gap-1 justify-end hover:text-(--text-color) max-md:justify-center"
-            href=""
+            href={myGitHub}
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="View source code on GitHub (opens in new window)"
           >
             GitHub

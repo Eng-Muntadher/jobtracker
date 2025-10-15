@@ -10,12 +10,12 @@ function CompaniesBox({ jobApplications }: CompaniesBoxProps) {
 
   return (
     <section className="custom-border" aria-labelledby="all-companies-header">
-      <h4
+      <h3
         className="text-(--text-color) font-semibold mb-1.5"
         id="all-companies-header"
       >
         All Companies Applied to
-      </h4>
+      </h3>
       <p className="text-(--text-color-secondary) mb-6">
         Companies where you&apos;ve submitted applications
       </p>

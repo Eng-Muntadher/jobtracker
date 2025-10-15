@@ -6,12 +6,12 @@ interface StatsTipsProps {
 function StatsTips({ recentApplications }: StatsTipsProps) {
   return (
     <section className="custom-border" aria-labelledby="tips-heading">
-      <h6
+      <h2
         className="text-(--text-color) font-semibold mb-1.5"
         id="tips-heading"
       >
         Insights & Recommendations
-      </h6>
+      </h2>
       <p className="text-(--text-color-secondary) mb-6">
         Personalized tips to improve your job search
       </p>

@@ -4,13 +4,13 @@ function QuickTips() {
       aria-labelledby="quick-tips-heading"
       className="max-w-3xl mx-auto mb-8 custom-border bg-(--input-color)"
     >
-      <h4
+      <h2
         className="text-(--text-color) text-lg font-semibold mb-7"
         id="quick-tips-heading"
       >
         <span aria-hidden="true">💡 </span>
         <span>Quick Tips</span>
-      </h4>
+      </h2>
 
       <ul className="text-(--text-color-secondary) text-sm flex flex-col gap-2">
         <li>• Keep track of application dates to follow up appropriately</li>

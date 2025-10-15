@@ -1,3 +1,5 @@
+// here are all the functions used to interact with the ai chat bot assistant
+
 import { getCurrentTime } from "./helpers";
 import { setAiChat, type NewMessage } from "./store/AichatSlice";
 import type { AppDispatch } from "./store/store";

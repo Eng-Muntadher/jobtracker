@@ -122,7 +122,7 @@ function UserName({
         className="object-cover w-24 h-24 rounded-full"
         alt="Profile picture"
       />
-      <h2 className="text-(--text-color)">
+      <h2 className="text-(--text-color) overflow-auto max-w-full">
         {userName || (
           <span className="text-(--text-color-secondary)">Add Username</span>
         )}

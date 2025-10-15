@@ -47,12 +47,12 @@ function AboutMe({ aboutMeText, isEditing, handleChange }: AboutMePorps) {
       className="custom-border max-h-[207.5px] overflow-y-auto h-[207.5px]"
       aria-labelledby="about-me-heading"
     >
-      <h3
+      <h2
         className="text-(--text-color) font-semibold mb-1.5"
         id="about-me-heading"
       >
         About Me
-      </h3>
+      </h2>
       <p className="text-(--text-color-secondary) mb-6">
         Tell others about your professional background
       </p>

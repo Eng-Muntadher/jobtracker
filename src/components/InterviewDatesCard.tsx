@@ -12,6 +12,7 @@ function InterviewDatesCard({
   isEditing,
   handleChange,
 }: jobInterviewDatesCard) {
+  // conditional return if we are in edit mode
   if (isEditing) {
     return (
       <fieldset className="custom-border h-fit">
@@ -37,7 +38,7 @@ function InterviewDatesCard({
   }
   return (
     <section className="custom-border h-fit">
-      <h5 className="text-(--text-color) mb-7">Interview Date</h5>
+      <h2 className="text-(--text-color) mb-7">Interview Date</h2>
       <div className="flex items-center gap-2 mb-2 text-sm">
         {interviewDate ? (
           <>

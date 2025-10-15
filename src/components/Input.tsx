@@ -30,7 +30,7 @@ function Input({
   defaultValue,
 }: InputProps) {
   const styles =
-    "bg-(--input-color) rounded-lg px-3 py-2 focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100";
+    "bg-(--input-color) text-(--text-color) rounded-lg px-3 py-2 focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100";
 
   return (
     <>

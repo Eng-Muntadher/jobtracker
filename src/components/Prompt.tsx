@@ -9,6 +9,7 @@ interface PromptProps {
   role: "ai" | "user";
 }
 
+// This component represents the propmt sent to or recieved from the ai chat bot
 function Prompt({
   text,
   imageSrc,
@@ -33,9 +34,9 @@ function Prompt({
         alt={altText}
         height={33}
         width={33}
-        className="object-cover w-[33px] h-[33px] rounded-full flex-shrink-0"
+        className="object-cover w-[33px] h-[33px] rounded-full flex-shrink-0 bg-red-300"
       />
-      <div className="bg-[#ECECF0] p-3 rounded-[0.625rem] w-md">
+      <div className="bg-(--prompt-bg-color) p-3 rounded-[0.625rem] w-md text-(--text-color)">
         <div className="mb-1 text-sm" id={ariaLabelledby}>
           {<ReactMarkdown>{text}</ReactMarkdown>}
         </div>

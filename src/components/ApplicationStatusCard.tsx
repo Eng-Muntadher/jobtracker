@@ -11,10 +11,11 @@ function ApplicationStatusCard({
   isEditing,
   handleChange,
 }: jobStatusCardProps) {
+  // conditional return if we are in edit mode
   if (isEditing) {
     return (
       <fieldset className="custom-border h-fit">
-        <h5 className="text-(--text-color) mb-7">Application Status</h5>
+        <h2 className="text-(--text-color) mb-7">Application Status</h2>
         <CustomSelect
           optionsArray={["Applied", "Interviewing", "Rejected", "Accepted"]}
           addedClasses="w-full"
@@ -30,7 +31,7 @@ function ApplicationStatusCard({
   const cssBgColor = `var(--${applicationStatus.toLowerCase()}-status-bg)`;
   return (
     <section className="custom-border h-fit">
-      <h5 className="text-(--text-color) mb-7">Application Status</h5>
+      <h2 className="text-(--text-color) mb-7">Application Status</h2>
       <span
         className="text-sm font-semibold py-2 px-[0.8rem] rounded-lg h-fit"
         style={{ color: cssTextColor, backgroundColor: cssBgColor }}

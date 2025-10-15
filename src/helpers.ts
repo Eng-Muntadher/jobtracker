@@ -1,5 +1,4 @@
 // This file contains all the helper functions used accross the app
-// mapper.js
 
 import dayjs from "dayjs";
 

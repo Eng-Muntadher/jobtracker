@@ -31,7 +31,9 @@ function ContactInfo({
               </span>
               <span className="text-sm font-semibold">Email</span>
             </h3>
-            <p className="text-(--text-color-secondary)">{email}</p>
+            <p className="text-(--text-color-secondary) overflow-auto max-w-full">
+              {email}
+            </p>
           </div>
 
           <div>
@@ -94,7 +96,9 @@ function ContactInfo({
             </span>
             <span className="text-sm font-semibold">Email</span>
           </h3>
-          <p className="text-(--text-color-secondary)">{email}</p>
+          <p className="text-(--text-color-secondary) overflow-auto max-w-full">
+            {email}
+          </p>
         </div>
 
         <div>
@@ -104,7 +108,7 @@ function ContactInfo({
             </span>
             <span className="text-sm font-semibold">Phone</span>
           </h3>
-          <p className="text-(--text-color-secondary)">
+          <p className="text-(--text-color-secondary) overflow-auto max-w-full">
             {phoneNumber || "Add a phone number"}
           </p>
         </div>
@@ -115,7 +119,7 @@ function ContactInfo({
             </span>
             <span className="text-sm font-semibold">Location</span>
           </h3>
-          <p className="text-(--text-color-secondary) mb-1">
+          <p className="text-(--text-color-secondary) mb-1 overflow-auto max-w-full">
             {location || "Add your location"}
           </p>
         </div>

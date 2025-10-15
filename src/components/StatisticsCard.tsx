@@ -15,12 +15,18 @@ function StatisticsCard({
 }: StatsCardProps) {
   return (
     <section className="custom-border" role="listitem">
-      <h3 className="flex items-center justify-between mb-6">
-        <span className="text-sm font-semibold">{header}</span>
-        <span aria-hidden="true">
-          <Icon size={16} color="#717182" />
+      <h2 className="flex items-center justify-between mb-6">
+        <span
+          className="text-sm font-semibold text-(--text-color)"
+          aria-hidden="true"
+        >
+          {header}
         </span>
-      </h3>
+        <span aria-hidden="true">
+          <Icon size={16} className="text-(--text-color-secondary)" />
+        </span>
+      </h2>
+
       <div className="font-bold text-(--text-color) text-2xl">
         {displayedNumber}
         <span className="sr-only">{header}</span> {/* For screen readers */}

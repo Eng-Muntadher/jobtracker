@@ -1,34 +1,45 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 @import "tailwindcss";
 
 :root {
+  --page-background: #fff;
   --text-color: #0a0a0a;
   --text-color-2: #fff;
+  --text-color-secondary: #717182;
   --bg-color-1: #fff;
   --bg-color-2: #030213;
-  --text-color-secondary: #717182;
+  --border-color: rgba(0, 0, 0, 0.1);
   --landing-page-section-color: #ececf0;
   --input-color: #f3f3f5;
 
+  --btn-hover-1: #d1d1d2;
+  --btn-hover-2: #2d2d2d;
+
+  --table-row-hover: rgba(236, 236, 240, 0.5);
+
   --accent: #e9ebef;
 
+  --accepted-status-color: #016630;
+  --accepted-status-bg: #dcfce7;
   --interviewing-status-color: #894b00;
   --interviewing-status-bg: #fef9c2;
   --applied-status-color: #193cb8;
   --applied-status-bg: #dbeafe;
+
   --rejected-status-color: #9f0712;
   --rejected-status-bg: #ffe2e2;
-  --accepted-status-color: #016630;
-  --accepted-status-bg: #dcfce7;
 
   --company-card-color: rgba(3, 2, 19, 0.1);
   --tipsCard-yellow: #fefce8;
   --tipsCard-green: #f0fdf4;
   --sign-out-btn: #d4183d;
   --skill-bg: #eceef2;
+
+  --blue-pie-cell: #3b82f6;
+  --green-pie-cell: #10b981;
+  --yellow-pie-cell: #facc15;
+  --red-pie-cell: #ef4444;
+
+  --prompt-bg-color: #ececf0;
 
   /* React hot toast global styles */
   --toast-width: 300px;
@@ -40,10 +51,68 @@
   --toast-border-radius: 8px;
 }
 
+.dark {
+  --page-background: #0a0a0a;
+  --text-color: #ffffff;
+  --text-color-2: #0a0a0a;
+  --border-color: #262626;
+
+  --input-color: rgba(45, 45, 45, 0.3);
+
+  --bg-color-1: #262626;
+  --bg-color-2: #fcfcfc;
+
+  --btn-hover-1: #3e3d3d;
+  --btn-hover-2: #e9ebef;
+
+  --accent: #262626;
+
+  --text-color-secondary: #a1a1a1;
+  --landing-page-section-color: #262626;
+
+  --accepted-status-color: #b9f8cf;
+  --accepted-status-bg: #0d542b;
+
+  --interviewing-status-color: oklch(0.945 0.129 101.54);
+  --interviewing-status-bg: #733e0a;
+
+  --applied-status-color: #bedbff;
+  --applied-status-bg: #1c398e;
+
+  --rejected-status-color: #ffc9c9;
+  --rejected-status-bg: #82181a;
+
+  --company-card-color: #262626;
+
+  --table-row-hover: #262626;
+
+  --tipsCard-yellow: #432004;
+  --tipsCard-green: #032e15;
+
+  --prompt-bg-color: #262626;
+
+  --skill-bg: #262626;
+
+  --blue-pie-cell: #1d4ed8;
+  --green-pie-cell: #047857;
+  --yellow-pie-cell: #b45309;
+  --red-pie-cell: #991b1b;
+
+  --sign-out-btn: color-mix(
+    in oklab,
+    oklch(0.396 0.141 25.723) 60%,
+    transparent
+  );
+}
+
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
 .custom-border {
-  @apply border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] p-6;
+  @apply border border-(--border-color) rounded-[0.875rem] p-6;
 }
 
 .custom-border-no-padding {
-  @apply border border-[rgba(0,0,0,0.1)] rounded-[0.875rem];
+  @apply border border-(--border-color) rounded-[0.875rem];
 }

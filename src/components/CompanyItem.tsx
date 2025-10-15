@@ -14,7 +14,7 @@ function CompanyItem({ index, company, role, status, date }: CompanyItemProps) {
     >
       <div className="flex items-center gap-3">
         <span
-          className="bg-(--company-card-color) w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold"
+          className="bg-(--company-card-color) text-(--text-color) w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold"
           aria-hidden="true"
         >
           {index}
@@ -29,7 +29,7 @@ function CompanyItem({ index, company, role, status, date }: CompanyItemProps) {
           {status}
         </span>
         <time
-          dateTime="..."
+          dateTime={date}
           className="text-(--text-color-secondary) text-xs text-end block"
         >
           {date}

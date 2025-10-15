@@ -20,12 +20,12 @@ function StatsPieChart({ jobApplications }: StatsPieChartProps) {
 
   return (
     <section className="custom-border" aria-labelledby="pie-chart-title">
-      <h4
+      <h3
         className="text-(--text-color) font-semibold mb-1.5"
         id="pie-chart-title"
       >
         Application Status Distribution
-      </h4>
+      </h3>
       <p className="text-(--text-color-secondary) mb-6">
         Visual breakdown of your application statuses
       </p>
@@ -54,17 +54,11 @@ function StatsPieChart({ jobApplications }: StatsPieChartProps) {
           onMouseMove={function Wde() {}}
           width={400}
         >
-          <Pie
-            dataKey="value"
-            fill="#8884d8"
-            onMouseEnter={function Wde() {}}
-            onMouseLeave={function Wde() {}}
-            outerRadius={80}
-          >
-            <Cell fill="#10B981" />
-            <Cell fill="#FACC15" />
-            <Cell fill="#3B82F6" />
-            <Cell fill="#EF4444" />
+          <Pie dataKey="value" fill="#8884d8" outerRadius={80}>
+            <Cell fill="var(--green-pie-cell)" />
+            <Cell fill="var(--yellow-pie-cell)" />
+            <Cell fill="var(--blue-pie-cell)" />
+            <Cell fill="var(--red-pie-cell)" />
           </Pie>
           <Tooltip />
           <Legend />

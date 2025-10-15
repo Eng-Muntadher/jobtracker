@@ -43,6 +43,8 @@ function UserProfileHeader({
 
   return (
     <header className="container flex justify-between px-4 mx-auto">
+      {/* This h1 is only for screen readers and to improve SEO optimization */}
+      <h1 className="sr-only">User Profile</h1>
       <button
         className="flex text-(--text-color) items-center gap-4 cursor-pointer max-[400px]:hidden hover:text-(--text-color-secondary)"
         onClick={() => navigate(-1)}

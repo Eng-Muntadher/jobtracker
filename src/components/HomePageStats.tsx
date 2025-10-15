@@ -1,4 +1,5 @@
 function HomePageStats() {
+  // Please don't mind the numbers below! I don't claim to have that many users in this app 👀
   return (
     <section
       className="flex justify-center mx-auto max-xl:container"
@@ -16,7 +17,7 @@ function HomePageStats() {
           <div role="listitem" className="flex flex-col text-center">
             <span
               aria-label="50,000 plus"
-              className="text-3xl font-bold text-(--bg-color-2) mb-2"
+              className="text-3xl font-bold text-(--text-color) mb-2"
             >
               50K+
             </span>
@@ -28,7 +29,7 @@ function HomePageStats() {
           <div role="listitem" className="flex flex-col text-center">
             <span
               aria-label="12,000 plus"
-              className="text-3xl font-bold text-(--bg-color-2) mb-2"
+              className="text-3xl font-bold text-(--text-color) mb-2"
             >
               12K+
             </span>
@@ -38,7 +39,7 @@ function HomePageStats() {
           <div role="listitem" className="flex flex-col text-center">
             <span
               aria-label="85 percent"
-              className="text-3xl font-bold text-(--bg-color-2) mb-2"
+              className="text-3xl font-bold text-(--text-color) mb-2"
             >
               85%
             </span>

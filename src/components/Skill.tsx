@@ -9,7 +9,7 @@ interface SkillProps {
 function Skill({ text, isEditing = false, deleteSkills }: SkillProps) {
   if (isEditing)
     return (
-      <li className="text-(--bg-color-2) text-xs font-semibold bg-(--skill-bg) px-2 py-0.5 rounded-lg flex gap-1 items-center">
+      <li className="text-xs text-(--text-color) font-semibold bg-(--skill-bg) px-2 py-0.5 rounded-lg flex gap-1 items-center">
         {text}
         <button
           className="cursor-pointer hover:text-red-600"
@@ -20,7 +20,7 @@ function Skill({ text, isEditing = false, deleteSkills }: SkillProps) {
       </li>
     );
   return (
-    <li className="text-(--bg-color-2) text-xs font-semibold bg-(--skill-bg) px-2 py-0.5 rounded-lg">
+    <li className="text-xs text-(--text-color) font-semibold bg-(--skill-bg) px-2 py-0.5 rounded-lg">
       {text}
     </li>
   );

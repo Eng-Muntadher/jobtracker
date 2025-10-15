@@ -12,7 +12,7 @@ import SingleApplicationPageHeading from "../components/SingleApplicationPageHea
 import Spinner from "../components/Spinner";
 
 function OneApplicationPage() {
-  // since this component has two modes, this state controls them
+  // since this component has two modes (edit mode and read mode), this state controls them
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   // this is the data that will be submitted by a child component
@@ -152,7 +152,7 @@ function OneApplicationPage() {
   );
 
   return isEditing ? (
-    // Whenever we are in edit mode, we return a form and sub fieldsets in child components
+    // Whenever we are in edit mode, we return a form and fieldsets in child components
     <form className="container mx-auto mt-8">{layout()}</form>
   ) : (
     <div className="container mx-auto mt-8">{layout()}</div>

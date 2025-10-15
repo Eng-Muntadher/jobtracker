@@ -22,8 +22,11 @@ function JobInfoCard({
   isEditing,
   handleChange,
 }: JobInfoCardProps) {
+  // this sets the style colors of the application status in a dynamic way
   const cssTextColor = `var(--${applicationStatus.toLowerCase()}-status-color)`;
   const cssBgColor = `var(--${applicationStatus.toLowerCase()}-status-bg)`;
+
+  // conditional return if we are in edit mode
   if (isEditing)
     return (
       <fieldset className="custom-border">
@@ -134,9 +137,9 @@ function JobInfoCard({
     <section aria-labelledby="job-details" className="custom-border">
       <div className="flex justify-between mb-[1.85rem]">
         <div>
-          <h4 className="text-(--text-color) text-3xl mb-2" id="job-details">
+          <h2 className="text-(--text-color) text-3xl mb-2" id="job-details">
             {companyName}
-          </h4>
+          </h2>
           <p className="text-(--text-color-secondary) text-xl">{jobTitle}</p>
         </div>
         <span
@@ -155,10 +158,7 @@ function JobInfoCard({
             </span>
             {location ? location : <span>No location specified</span>}
           </p>
-          <p
-            aria-label="date-applied"
-            className="flex gap-2 text-(--text-color-secondary) items-center"
-          >
+          <p className="flex gap-2 text-(--text-color-secondary) items-center">
             <span aria-hidden="true">
               <Calendar size={16} />
             </span>

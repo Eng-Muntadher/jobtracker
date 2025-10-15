@@ -13,15 +13,16 @@ function JobLinksCard({
   isEditing,
   handleChange,
 }: JobLinksCardProps) {
+  // conditional return if we are in edit mode
   if (isEditing) {
     return (
       <fieldset className="custom-border">
-        <h5 className="flex items-center gap-2 mb-6">
+        <h2 className="flex items-center gap-2 mb-6">
           <span aria-hidden="true">
-            <LinkIcon size={20} />
+            <LinkIcon size={20} className="text-(--text-color)" />
           </span>
           <span className="text-(--text-color)">Links</span>
-        </h5>
+        </h2>
 
         <label
           htmlFor="job-posting"
@@ -61,16 +62,16 @@ function JobLinksCard({
   }
   return (
     <section className="custom-border">
-      <h5 className="flex items-center gap-2 mb-6">
+      <h2 className="flex items-center gap-2 mb-6">
         <span aria-hidden="true">
-          <LinkIcon size={20} />
+          <LinkIcon size={20} className="text-(--text-color)" />
         </span>
         <span className="text-(--text-color)">Links</span>
-      </h5>
+      </h2>
 
-      <h6 className="text-(--text-color) font-semibold text-sm mb-2">
+      <h3 className="text-(--text-color) font-semibold text-sm mb-2">
         Job Posting
-      </h6>
+      </h3>
 
       {jobPosting ? (
         <a
@@ -92,9 +93,9 @@ function JobLinksCard({
         Opens in new window
       </span>
 
-      <h6 className="text-(--text-color) font-semibold text-sm mb-2">
+      <h3 className="text-(--text-color) font-semibold text-sm mb-2">
         Contact/Recruiter
-      </h6>
+      </h3>
       {contact ? (
         <a
           href={`${contact}`}

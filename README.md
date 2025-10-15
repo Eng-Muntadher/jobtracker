@@ -18,32 +18,32 @@ A portfolio project for tracking a user's job applications with full Authenticat
 - Day.js
 - Supabase
 - React Markdown
+- React Error Boundary
 
 ---
 
-## Current Features
+## Features
 
-- Static homepage (fully responsive)
+- Homepage (fully responsive)
 - Login page (fully responsive)
-- Static applications page (fully responsive)
-- Static new-application page (fully responsive)
-- Static one-Application page (fully responsive)
-- Static Stats page (fully responsive)
-- Static user profile page (fully responsive)
+- Job applications page (fully responsive)
+- Add-application page (fully responsive)
+- Single-Application page (fully responsive)
+- Stats page (fully responsive)
+- User profile page (fully responsive)
 - Full authentication and authorization with Supabase
 - Notifications using React Toaster
 - CRUD operations for job applications
 - State management with Redux
+- Caching with React Query
 - Sort, filter and search job applications
 - User dashboard with job statistics
 - AI chat bot for better UX
 - User profile page (edit/delete personal info and profile image)
-
----
-
-## Planned / Future Features
-
 - Sign up for new users
+- Dark mode
+- Protected Routes
+- Error boundaries and error handling
 
 ---
 

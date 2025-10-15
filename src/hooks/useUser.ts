@@ -7,7 +7,6 @@ import type { User } from "@supabase/supabase-js";
 export function useUser() {
   const queryClient = useQueryClient();
 
-  // React Query hook
   const query = useQuery<User | null, Error>({
     queryKey: ["currentUser"],
     queryFn: getCurrentUser,

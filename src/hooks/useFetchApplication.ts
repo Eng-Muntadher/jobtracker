@@ -1,4 +1,3 @@
-// hook
 import { useQuery } from "@tanstack/react-query";
 import { fetchOneApplicationFullData } from "../servises/jobApplicationsApi";
 

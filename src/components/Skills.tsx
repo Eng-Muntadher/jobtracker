@@ -91,7 +91,7 @@ function Skills({ skillsSet, isEditing, handleChange }: SkillsProps) {
 
   return (
     <section className="custom-border max-h-[148px] overflow-y-auto">
-      <h3 className="text-(--text-color) font-semibold mb-1.5">Skills</h3>
+      <h2 className="text-(--text-color) font-semibold mb-1.5">Skills</h2>
       <p className="text-(--text-color-secondary) mb-6">
         Your technical and professional skills
       </p>

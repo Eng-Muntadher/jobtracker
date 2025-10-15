@@ -3,10 +3,10 @@ import { BarChart3, Briefcase, MessageCircle } from "lucide-react";
 
 function NavLinks({ addedClasses }: { addedClasses?: string }) {
   const classToggle = ({ isActive }: { isActive: boolean }) =>
-    `flex gap-4 px-3 py-2 rounded-lg items-center text-sm font-semibold ${addedClasses} ${
+    `flex gap-4 px-3 py-2 rounded-lg items-center text-sm font-semibold focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100 ${addedClasses} ${
       isActive
         ? "text-(--text-color-2) bg-(--bg-color-2)"
-        : "text-(--text-color) hover:bg-[#e9ebef] transition-all ease-in duration-100"
+        : "text-(--text-color) hover:bg-[#e9ebef] hover:text-black transition-all ease-in duration-100"
     }`;
 
   return (
@@ -15,7 +15,7 @@ function NavLinks({ addedClasses }: { addedClasses?: string }) {
       aria-label={
         addedClasses ? "Mobile navigation links" : "Desktop navigation links"
       }
-      aria-hidden={!addedClasses}
+      // aria-hidden={!addedClasses}
       className={`grid grid-cols-[auto_auto_auto] gap-6 max-[370px]:gap-0 ${
         !addedClasses ? "max-md:hidden" : ""
       }`}

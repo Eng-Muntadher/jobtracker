@@ -1,6 +1,10 @@
+import { useUser } from "../hooks/useUser";
 import Button from "./Button";
 
 function SignUpForHomePage() {
+  // get the currently signed in user (if there is one)
+  const { data: user } = useUser();
+
   return (
     <section
       aria-label="cta-heading"
@@ -16,14 +20,19 @@ function SignUpForHomePage() {
         Start tracking your job applications today and take control of your
         career
       </p>
-      <Button
-        to="sign-in"
-        variation="dark"
-        onClick={() => console.log("Cta")}
-        additionalClasses="px-6 py-2.5"
-      >
-        Sign Up Now
-      </Button>
+      {user ? (
+        <Button
+          to="/add-application"
+          variation="dark"
+          additionalClasses="px-6 py-2.5"
+        >
+          Start Tracking
+        </Button>
+      ) : (
+        <Button to="sign-in" variation="dark" additionalClasses="px-6 py-2.5">
+          Sign Up Now
+        </Button>
+      )}
     </section>
   );
 }

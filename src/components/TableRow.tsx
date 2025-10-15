@@ -29,13 +29,13 @@ function TableRow({ company, role, status, date, id }: TableRowProps) {
   }
 
   if (isPending) {
-    // If we render a div inside a table we cause a hydration error so we use React portals
+    // If we render a div inside a table we cause a hydration error, so we use React portals
     return createPortal(<Spinner />, document.getElementById("root")!);
   }
 
   return (
     <tr
-      className="flex py-4 border-b border-[rgba(0,0,0,0.1)] hover:bg-[#ececf0]/50 transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
+      className="flex text-(--text-color) py-4 border-b border-(--border-color) hover:bg-(--table-row-hover) transition-all ease-out duration-300 cursor-pointer focus:outline-none focus:bg-[#ececf0]/50"
       onClick={() => navigate(`/application/${id}`)}
       onKeyDown={(e) => e.key === "Enter" && navigate(`/application/${id}`)}
       tabIndex={0}

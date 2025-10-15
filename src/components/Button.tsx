@@ -29,13 +29,13 @@ function Button({
   accessibility,
 }: ButtonProps) {
   const btnClasses =
-    "cursor-pointer text-center text-sm font-semibold py-2 rounded-lg border flex items-center";
+    "cursor-pointer text-center text-sm font-semibold py-2 rounded-lg border flex items-center focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100";
 
   const variations: BtnVariation = {
     light:
-      "text-(--text-color) bg-(--bg-color-1) border-[rgba(0,0,0,0.1)] hover:bg-[#e9ebef]",
-    dark: "text-(--text-color-2) bg-(--bg-color-2) hover:bg-[#2d2d2d]",
-    red: "text-white bg-(--sign-out-btn) px-3 py-2 flex gap-4 items-center rounded-lg justify-center",
+      "text-(--text-color) bg-(--bg-color-1) border-[rgba(0,0,0,0.1)] hover:bg-(--btn-hover-1)",
+    dark: "text-(--text-color-2) bg-(--bg-color-2) hover:bg-(--btn-hover-2)",
+    red: "text-white bg-(--sign-out-btn) px-3 py-2 flex gap-4 items-center rounded-lg justify-center border-none hover:bg-[oklch(.396_.141_25.723)] hover:bg-[color-mix(in_oklab,oklch(.396_.141_25.723)_80%,black)]",
   };
 
   return link ? (

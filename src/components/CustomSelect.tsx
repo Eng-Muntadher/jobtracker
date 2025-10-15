@@ -1,8 +1,9 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-/* This is a reusable custom select element. The state is sets can be
- a normal local state for any element or a redux state for any slice. in both cases, a state setter function is passed */
+/* This is a reusable custom select element. The state it sets can be
+   a normal local state for any element or a redux state for any slice. 
+   In both cases, a state setter function is passed */
 
 type func1 = (value: unknown) => void;
 type func2 = (name: string, value: string) => void;
@@ -10,7 +11,6 @@ type func2 = (name: string, value: string) => void;
 interface SelectOptions {
   optionsArray: string[];
   onChange: func1 | func2;
-
   name?: string;
   specialCase?: boolean;
   addedClasses?: string;
@@ -18,6 +18,7 @@ interface SelectOptions {
   reduxActionCreator?: (x: string) => unknown;
   value?: string;
 }
+
 function CustomSelect({
   optionsArray,
   addedClasses,
@@ -30,6 +31,7 @@ function CustomSelect({
 }: SelectOptions) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const optionRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [statusFilter, setStatusFilter] = useState(
     value ? value : optionsArray[0]
@@ -51,11 +53,10 @@ function CustomSelect({
     }
     setStatusFilter(item);
     setMenuIsOpen(false);
+    buttonRef.current?.focus();
   }
 
-  /* This useEffect checks if the user clicks inside the select btn
-         or anywhere outside the drop down menu to close the menu
-        */
+  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -67,15 +68,12 @@ function CustomSelect({
         setMenuIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative text-(--text-color)">
       <button
         type="button"
         id="application-status"
@@ -84,6 +82,12 @@ function CustomSelect({
         ref={buttonRef}
         className={`bg-(--input-color) rounded-lg px-3 py-2 text-sm focus:outline-none flex justify-between items-center cursor-pointer focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100 ${addedClasses}`}
         onClick={handleOpenCloseMenu}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowDown" && menuIsOpen) {
+            e.preventDefault();
+            optionRefs.current[0]?.focus();
+          }
+        }}
       >
         <span>{statusFilter}</span>
         <span>
@@ -98,15 +102,39 @@ function CustomSelect({
       {menuIsOpen && (
         <div
           ref={dropdownRef}
-          className="border border-[rgba(0,0,0,0.1)] text-sm bg-(--bg-color-1) text-(--text-color) rounded-lg absolute w-full px-1.5 py-2 flex flex-col mt-1.5 transition-all ease-in-out duration-300"
+          className="border border-[rgba(0,0,0,0.1)] text-sm bg-(--bg-color-1) text-(--text-color) rounded-lg absolute w-full px-1.5 py-2 flex flex-col mt-1.5 transition-all ease-in-out duration-300 z-10"
         >
           <ul role="listbox">
-            {optionsArray.map((option: string) => (
+            {optionsArray.map((option, i) => (
               <li
-                role="option"
                 key={option}
-                className="px-1 py-2 rounded-sm cursor-pointer hover:bg-(--input-color)"
+                role="option"
+                ref={(el) => {
+                  optionRefs.current[i] = el;
+                }}
+                tabIndex={0}
+                className="px-1 py-2 rounded-sm cursor-pointer hover:bg-(--input-color) focus:bg-(--input-color) outline-none"
                 onClick={() => handleChangeStatus(option)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleChangeStatus(option);
+                  } else if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    const next = optionRefs.current[i + 1];
+                    (next || optionRefs.current[0])?.focus(); // loop
+                  } else if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    const prev = optionRefs.current[i - 1];
+                    (
+                      prev || optionRefs.current[optionsArray.length - 1]
+                    )?.focus(); // loop
+                  } else if (e.key === "Escape") {
+                    e.preventDefault();
+                    setMenuIsOpen(false);
+                    buttonRef.current?.focus();
+                  }
+                }}
               >
                 {option}
               </li>

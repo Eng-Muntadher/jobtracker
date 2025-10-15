@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import {
   login,
   login as loginApi,
-  type loginArguments,
+  type LoginArguments,
 } from "../servises/UserApi";
 import { toast } from "react-hot-toast";
 
@@ -15,7 +15,7 @@ export function useLogin() {
   const { mutate: login, isPending } = useMutation<
     LoginResult,
     Error,
-    loginArguments
+    LoginArguments
   >({
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: () => navigate("/"),

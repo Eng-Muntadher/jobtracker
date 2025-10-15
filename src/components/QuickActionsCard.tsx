@@ -13,7 +13,7 @@ function QuickActionsCard({
 }: QuickActionsCardProps) {
   return (
     <section className="custom-border h-fit">
-      <h5 className="text-(--text-color) mb-7">Quick Actions</h5>
+      <h2 className="text-(--text-color) mb-7">Quick Actions</h2>
       <div className="flex flex-col gap-2">
         <QuickActionBtn link={true} text="View Job Posting" href={jobLink} />
 

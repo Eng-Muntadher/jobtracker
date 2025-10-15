@@ -32,7 +32,7 @@ function AddApplicationForm() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = {
-      user_id: "",
+      user_id: "", // this will be used for user authorization
       companyName,
       jobTitle,
       applicationStatus,
@@ -68,18 +68,19 @@ function AddApplicationForm() {
       onSubmit={handleSubmit}
     >
       {isPending && <Spinner />}
+
       <fieldset className="block w-full max-w-3xl mb-6 custom-border">
-        <h4
+        <h2
           aria-label="basic information"
           className="flex items-center gap-2 mb-2"
         >
           <span aria-hidden="true">
-            <FileText size={20} />
+            <FileText size={20} className="text-(--text-color)" />
           </span>
           <span className="text-(--text-color) font-semibold">
             Basic Information
           </span>
-        </h4>
+        </h2>
         <p className="text-(--text-color-secondary) mb-6">
           Enter the essential details about the job and company
         </p>
@@ -204,17 +205,17 @@ function AddApplicationForm() {
       </fieldset>
 
       <fieldset className="block w-full max-w-3xl mb-6 custom-border">
-        <h4
+        <h2
           aria-label="Links and compensation"
           className="flex items-center gap-2 mb-2"
         >
           <span aria-hidden="true">
-            <LinkIcon size={20} />
+            <LinkIcon size={20} className="text-(--text-color)" />
           </span>
           <span className="text-(--text-color) font-semibold">
             Links & Compensation
           </span>
-        </h4>
+        </h2>
         <p className="text-(--text-color-secondary) mb-6">
           Add relevant links and salary information
         </p>
@@ -283,12 +284,12 @@ function AddApplicationForm() {
       </fieldset>
 
       <fieldset className="block w-full max-w-3xl mb-6 custom-border">
-        <h4 aria-label="job-details" className="flex items-center gap-2 mb-2">
+        <h2 aria-label="job-details" className="flex items-center gap-2 mb-2">
           <span aria-hidden="true">
-            <FileText size={20} />
+            <FileText size={20} className="text-(--text-color)" />
           </span>
           <span className="text-(--text-color) font-semibold">Job Details</span>
-        </h4>
+        </h2>
         <p className="text-(--text-color-secondary) mb-6">
           Add details about the role and responsibilities
         </p>
@@ -316,17 +317,17 @@ function AddApplicationForm() {
       </fieldset>
 
       <fieldset className="block w-full max-w-3xl mb-6 custom-border">
-        <h4
+        <h2
           aria-label="Links and compensation"
           className="flex items-center gap-2 mb-2"
         >
           <span aria-hidden="true">
-            <MessageSquare size={20} />
+            <MessageSquare size={20} className="text-(--text-color)" />
           </span>
           <span className="text-(--text-color) font-semibold">
             Notes & Progress
           </span>
-        </h4>
+        </h2>
         <p className="text-(--text-color-secondary) mb-6">
           Track your progress add personal notes about this application
         </p>

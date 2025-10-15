@@ -1,19 +1,41 @@
-import { Moon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useUser } from "../hooks/useUser";
 import Button from "./Button";
 import guestImage from "../images/guest.jpeg";
+import { useEffect, useState } from "react";
 
 function SignUpAndDarkMode() {
   const { data: user } = useUser();
 
+  const [darkMode, setDarkMode] = useState(
+    () => localStorage.getItem("theme") === "dark"
+  );
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
+  function toggleDarkMode() {
+    setDarkMode((prev) => !prev);
+  }
+
   return (
     <div className="flex items-center justify-center">
       <button
-        aria-label="Toggle dark mode"
-        className="hover:bg-[#e9ebef] w-[2.25rem] h-[2.25rem] flex justify-center items-center mr-4 rounded-lg cursor-pointer"
+        onClick={toggleDarkMode}
+        // For screen readers to tell which mode is active
+        aria-pressed={darkMode}
+        aria-label={`Activate ${darkMode ? "light" : "dark"} mode`}
+        className="hover:bg-[#e9ebef] text-(--text-color) hover:text-black w-[2.25rem] h-[2.25rem] flex justify-center items-center mr-4 rounded-lg cursor-pointer focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100"
       >
-        <Moon size={16} />
+        {darkMode ? <Sun size={16} className="" /> : <Moon size={16} />}
       </button>
 
       {/* If user in authenticated, display the user profile. Otherwise display the sign In btn*/}
@@ -22,7 +44,10 @@ function SignUpAndDarkMode() {
           Sign In
         </Button>
       ) : (
-        <Link to="user-profile">
+        <Link
+          to="user-profile"
+          className="focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100 rounded-full hover:outline-none hover:ring-3 hover:ring-(--text-color-secondary)"
+        >
           <img
             src={user.user_metadata.publicUrl || guestImage}
             height={33}

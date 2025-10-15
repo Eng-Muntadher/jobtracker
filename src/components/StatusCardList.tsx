@@ -5,7 +5,7 @@ import { UseFetchApplications } from "../hooks/useFetchApplications";
 function StatusCardList() {
   const { data: applications } = UseFetchApplications();
 
-  // In case there is lots of data to be fetched, this useMemo is very important!
+  // In case there is lots of data to be fetched, this useMemo is very important to save calculation time!
   const CardsContent = useMemo(() => {
     const accepted =
       applications?.filter((app) => app.application_status === "Accepted") ??

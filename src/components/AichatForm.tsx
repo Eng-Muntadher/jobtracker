@@ -48,14 +48,14 @@ function AichatForm() {
         name="AI-Chat"
         required={true}
         placeholder="Ask me about your job search..."
-        addedClasses="grow"
+        addedClasses="grow text-sm"
         srOnlyInfo="Write a message to the AI assistant"
       />
       <button
         className="p-2.5 bg-(--bg-color-2) opacity-50 rounded-lg cursor-pointer focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100"
         aria-label="Send a message to the AI assistant"
       >
-        <Send size={16} color="white" aria-hidden="true" />
+        <Send size={16} className="text-(--text-color-2)" aria-hidden="true" />
       </button>
     </form>
   );

@@ -15,7 +15,10 @@ import { sortByKey } from "../helpers";
 function Table() {
   const dispatch = useDispatch<AppDispatch>();
 
+  // fetch all applications using React query
   const { data, isPending } = UseFetchApplications();
+
+  // get filter and search states from redux
   const { search, filter, sortOrder, sortBy } = useSelector(
     (state: RootState) => state.searchFilterSort
   );
@@ -68,14 +71,14 @@ function Table() {
       aria-labelledby="applications-heading"
       className="container mx-auto mb-6"
     >
-      <div className="mx-4 bg-(--bg-color-1) overflow-auto max-h-[263.6px]">
+      <div className="mx-4  overflow-auto max-h-[263.6px]">
         <table
           role="table"
           aria-label="job applications tracking table"
-          className="border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] block pt-2.5 min-w-[736px] min-h-[263.6px]"
+          className="border border-(--border-color) rounded-[0.875rem] block pt-2.5 min-w-[736px] min-h-[263.6px]"
         >
           <thead className="block w-full">
-            <tr className="flex justify-between pb-2.5 border-b border-[rgba(0,0,0,0.1)]">
+            <tr className="flex justify-between pb-2.5 border-b border-(--border-color)">
               <th
                 className="flex justify-center w-1/5 text-sm font-semibold text-(--text-color)"
                 scope="col"

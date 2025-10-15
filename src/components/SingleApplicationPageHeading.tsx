@@ -48,6 +48,9 @@ function SingleApplicationPageHeading({
 
   return (
     <div className="flex items-center justify-between px-4 max-w-[896px] mx-auto mb-6 max-[400px]:justify-end">
+      {/* This h1 is only for screen readers and to improve SEO optimization */}
+      <h1 className="sr-only">Single application details</h1>
+
       <nav aria-label="Breadcrumb" className="max-[400px]:hidden">
         <Link
           to="/all-applications"

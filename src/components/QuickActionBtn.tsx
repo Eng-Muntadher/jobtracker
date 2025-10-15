@@ -16,7 +16,7 @@ function QuickActionBtn({
   href = "",
 }: BtnProps) {
   const tailwindClasses =
-    "px-[0.8rem] py-2 border border-[rgba(0,0,0,0.1)] rounded-[0.875rem] flex gap-4 text-(--text-color) items-center hover:bg-(--accent) cursor-pointer";
+    "px-[0.8rem] py-2 border border-(--border-color) rounded-[0.875rem] flex gap-4 text-(--text-color) items-center hover:bg-(--accent) cursor-pointer";
 
   if (!link) {
     return (

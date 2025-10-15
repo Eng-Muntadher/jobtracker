@@ -15,11 +15,12 @@ function AiChatBox() {
     (state: RootState) => state.aiChat
   );
 
+  // a custom hook that uses React Query to fetch the current user data
   const { data: user } = useUser();
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to the bottom whenever messages change
+  // Scroll to the bottom whenever a new message is added
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -31,12 +32,12 @@ function AiChatBox() {
       aria-labelledby="chat-section-heading"
       className="custom-border max-w-[896px] mx-auto mb-6"
     >
-      <h3 id="chat-section-heading" className="flex items-center gap-2 mb-6">
+      <h2 id="chat-section-heading" className="flex items-center gap-2 mb-6">
         <span aria-hidden="true">
           <Bot size={20} className="text-(--text-color)" />
         </span>
         <span className="text-(--text-color)">Chat with AI Assistant</span>
-      </h3>
+      </h2>
 
       <div
         ref={containerRef}
