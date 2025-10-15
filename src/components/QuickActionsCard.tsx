@@ -1,4 +1,4 @@
-import { Calendar, ExternalLink, FileText, MessageSquare } from "lucide-react";
+import { Calendar, FileText, MessageSquare } from "lucide-react";
 import QuickActionBtn from "./QuickActionBtn";
 
 interface QuickActionsCardProps {

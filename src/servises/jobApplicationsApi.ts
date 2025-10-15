@@ -1,4 +1,4 @@
-import { toSnake, type UserDb, type UserJs } from "../helpers";
+import { toSnake, type UserJs } from "../helpers";
 import supabase from "./supabase";
 
 export async function uploadApplication(data: UserJs) {

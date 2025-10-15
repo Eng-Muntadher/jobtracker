@@ -2,7 +2,7 @@ import { ExternalLink, Github, Mail } from "lucide-react";
 import { useMyOwnInfo } from "../hooks/useMyOwnInfo";
 
 function Footer() {
-  const { data, isPending } = useMyOwnInfo();
+  const { data } = useMyOwnInfo();
   const myEmail = data?.at(0)?.value;
   const myPortfolio = data?.at(1)?.value;
   const myGitHub = data?.at(2)?.value;
