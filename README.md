@@ -1,53 +1,71 @@
-# JobTracker
+# 🎯 JobTracker
 
-A portfolio project for tracking a user's job applications with full Authentication, CRUD operations, and database support built completely by me using React, TypeScript, Tailwind, React Router, Supabase, and more.
+🚀 **[Live Demo](https://jobtracker-99.vercel.app)**  
+🎨 **[Figma Design](https://www.figma.com/design/mpsBxlJ4se2CLcwh9es5M3/Untitled?node-id=6-8081t=4Ft2Ki0mUJchWY9Z-0)**
 
----
-
-## Tech Stack
-
-- React
-- TypeScript
-- Tailwind CSS
-- React Router
-- React Query
-- Redux
-- React Toaster
-- Recharts
-- Lucide Icons
-- Day.js
-- Supabase
-- React Markdown
-- React Error Boundary
+A modern, full-featured **job application tracking system** built entirely by me using **React, TypeScript, Tailwind CSS, Supabase**, and more.  
+JobTracker helps users efficiently manage their job applications, track progress, and gain insights — all in one intuitive dashboard.
 
 ---
 
-## Features
+## 🛠 Tech Stack
 
-- Homepage (fully responsive)
-- Login page (fully responsive)
-- Job applications page (fully responsive)
-- Add-application page (fully responsive)
-- Single-Application page (fully responsive)
-- Stats page (fully responsive)
-- User profile page (fully responsive)
-- Full authentication and authorization with Supabase
-- Notifications using React Toaster
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **React Router**
+- **React Query**
+- **Redux Toolkit**
+- **React Hot Toast**
+- **Recharts**
+- **Lucide Icons**
+- **Day.js**
+- **Supabase**
+- **React Markdown**
+- **React Error Boundary**
+
+---
+
+## ✨ Features
+
+### 🧭 Core Functionality
+
+- Full authentication & authorization with Supabase
 - CRUD operations for job applications
-- State management with Redux
-- Caching with React Query
-- Sort, filter and search job applications
-- User dashboard with job statistics
-- AI chat bot for better UX
-- User profile page (edit/delete personal info and profile image)
-- Sign up for new users
-- Dark mode
-- Protected Routes
+- Sort, filter, and search functionality
+- State management with Redux Toolkit
+- Data caching with React Query
+
+### 📊 User Experience
+
+- Interactive dashboard with job statistics
+- AI-powered chatbot for better UX
+- Notifications using React Hot Toast
+- Dark mode toggle
 - Error boundaries and error handling
 
+### 👤 User Profile
+
+- Edit or delete personal info
+- Upload and update profile image
+- Secure account management
+
+### 📱 Responsive Pages
+
+- Homepage
+- Login & Signup pages
+- Job Applications page
+- Add Application page
+- Single Application details page
+- Stats page
+- AI Chat page
+- User Profile page
+
+_All pages are fully responsive and optimized for all screen sizes._
+
 ---
 
-## Screenshots / Demo
+## 🖼 Screenshots
 
 ### Homepage
 
@@ -61,11 +79,11 @@ A portfolio project for tracking a user's job applications with full Authenticat
 
 ![Applications Page Screenshot](public/assets/applications.png)
 
-### New Applications Page
+### Add Application Page
 
-![New Application Page Screenshot](public/assets/AddNewApplication.png)
+![Add Application Page Screenshot](public/assets/AddNewApplication.png)
 
-### Single Applications Page
+### Single Application Page
 
 ![Single Application Page Screenshot](public/assets/SingleApplicationPage.png)
 
@@ -83,9 +101,9 @@ A portfolio project for tracking a user's job applications with full Authenticat
 
 ---
 
-## Running Locally
+## 💻 Running Locally
 
-To run this project locally, follow these commands:
+To run this project locally, follow these steps:
 
 ```bash
 # 1. Clone the repository and navigate into it

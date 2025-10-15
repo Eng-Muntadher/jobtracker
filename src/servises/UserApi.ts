@@ -24,7 +24,7 @@ export async function signUp({ email, password }: LoginArguments) {
     email,
     password,
     options: {
-      emailRedirectTo: "http://localhost:5173/auth/callback",
+      emailRedirectTo: "https://jobtracker-99.vercel.app/auth/callback",
     },
   });
 
