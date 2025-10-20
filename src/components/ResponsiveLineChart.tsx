@@ -40,7 +40,12 @@ function ResponsiveLineChart({ jobApplications }: ResponsiveLineChartProps) {
             } // full date (September 12, 2025)
           />
           <Legend />
-          <Line type="monotone" dataKey="applications" stroke="#8884d8" />
+          <Line
+            type="monotone"
+            dataKey="applications"
+            stroke="#8884d8"
+            isAnimationActive={false}
+          />
         </LineChart>
       </ResponsiveContainer>
 

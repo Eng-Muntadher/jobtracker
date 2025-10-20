@@ -54,7 +54,12 @@ function StatsPieChart({ jobApplications }: StatsPieChartProps) {
           onMouseMove={function Wde() {}}
           width={400}
         >
-          <Pie dataKey="value" fill="#8884d8" outerRadius={80}>
+          <Pie
+            dataKey="value"
+            fill="#8884d8"
+            outerRadius={80}
+            isAnimationActive={false}
+          >
             <Cell fill="var(--green-pie-cell)" />
             <Cell fill="var(--yellow-pie-cell)" />
             <Cell fill="var(--blue-pie-cell)" />

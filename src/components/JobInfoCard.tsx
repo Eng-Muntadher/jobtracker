@@ -52,6 +52,7 @@ function JobInfoCard({
               type="text"
               id="company-name"
               name="company-name"
+              placeholder="Comapny name"
               defaultValue={companyName}
               addedClasses="font-bold w-full text-sm"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -67,6 +68,7 @@ function JobInfoCard({
               type="text"
               id="job-title"
               name="job-title"
+              placeholder="Job title"
               defaultValue={jobTitle}
               addedClasses="w-[228px] w-full text-sm"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -91,6 +93,7 @@ function JobInfoCard({
                 type="text"
                 id="job-location"
                 name="job-location"
+                placeholder="Job location"
                 defaultValue={location}
                 addedClasses="text-sm grow"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -136,6 +139,7 @@ function JobInfoCard({
               type="text"
               id="salary"
               name="salary"
+              placeholder="Expected salary"
               defaultValue={salary}
               addedClasses="text-sm grow"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

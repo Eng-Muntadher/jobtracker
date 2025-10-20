@@ -20,7 +20,9 @@ function AddApplicationForm() {
   const [companyName, setCompanyName] = useState<string>("");
   const [jobTitle, setJobTitle] = useState<string>("");
   const [applicationStatus, setApplicationStatus] = useState<string>("Applied");
-  const [applicationDate, setApplicationDate] = useState<string>("");
+  const [applicationDate, setApplicationDate] = useState<string>(
+    new Date().toISOString().split("T")[0]
+  );
   const [location, setLocation] = useState<string>("");
   const [jobPosting, setJobPosting] = useState<string>("");
   const [contact, setContact] = useState<string>("");
