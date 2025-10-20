@@ -74,10 +74,11 @@ function Footer() {
         </div>
       </div>
 
-      <div className="mt-8 text-sm text-center text-(--text-color-secondary)">
+      <div className="mt-8 text-sm text-center text-(--text-color-secondary) p-4">
         <p className="mb-3">
           Project built with React, TypeScript, Tailwind CSS, and more
         </p>
+
         <p className="mb-16">
           &copy; {year} Muntadher Ahmed. All rights reserved.
         </p>

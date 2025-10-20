@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import type { SubmittedUserData } from "../pages/UserProfile";
 import supabase from "./supabase";
 import type { User } from "@supabase/supabase-js";
@@ -20,6 +21,13 @@ export async function login({ email, password }: LoginArguments) {
 }
 
 export async function signUp({ email, password }: LoginArguments) {
+  const emailIsTaken = await checkEmailExists(email);
+
+  if (emailIsTaken) {
+    toast.error("This email is already taken. Try signing in instead");
+    throw Error("Email is taken");
+  }
+
   let { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -102,4 +110,19 @@ export async function uploadUserAvatar(
     console.error("Error uploading avatar:", error);
     return null;
   }
+}
+
+export async function checkEmailExists(email: string): Promise<boolean> {
+  // Try signing in with a random password (guaranteed to fail)
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password: "random-nonexistent-password",
+  });
+
+  // If the error is "Invalid login credentials", email exists
+  // If "User not found", email does not exist
+  if (error?.message.includes("Invalid login credentials")) return true;
+  if (error?.message.includes("User not found")) return false;
+
+  return false;
 }

@@ -52,7 +52,7 @@
 }
 
 .dark {
-  --page-background: #0a0a0a;
+  --page-background: #000;
   --text-color: #ffffff;
   --text-color-2: #0a0a0a;
   --border-color: #262626;
@@ -115,4 +115,37 @@ body {
 
 .custom-border-no-padding {
   @apply border border-(--border-color) rounded-[0.875rem];
+}
+
+/* For Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--text-color-2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #555 var(--text-color-2);
+}
+
+html,
+body,
+#root {
+  background-color: var(--page-background);
+  color: var(--text-color);
+  transition: background-color 0.25s linear, color 0.25s linear;
 }

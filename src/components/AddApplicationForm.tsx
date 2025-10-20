@@ -29,6 +29,19 @@ function AddApplicationForm() {
   const [jobNotes, setJobNotes] = useState<string>("");
   const { isPending, uploadApplication } = useUploadApplication();
 
+  // Here we set a limit for the date input (one year before and after the current year for an application)
+  const today = new Date();
+
+  // Get the current year
+  const currentYear = today.getFullYear();
+
+  // Calculate min and max years (1 before and 1 after)
+  const minDate = new Date(currentYear - 1, 0, 1); // Jan 1 of 3 years ago
+  const maxDate = new Date(currentYear + 1, 11, 31); // Dec 31 of 3 years ahead
+
+  // Convert to yyyy-mm-dd format
+  const formatDate = (date: Date) => date.toISOString().split("T")[0];
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = {
@@ -172,6 +185,8 @@ function AddApplicationForm() {
               id="application-date"
               name="applicationDate"
               value={applicationDate}
+              min={formatDate(minDate)}
+              max={formatDate(maxDate)}
               onChange={(e: event) => setApplicationDate(e.target.value)}
               srOnlyInfo="Enter the date of the current application"
               addedClasses="block w-full text-sm cursor-pointer mb-6"

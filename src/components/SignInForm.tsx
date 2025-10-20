@@ -39,7 +39,7 @@ function SignInForm() {
   };
 
   return (
-    <div className="mx-4">
+    <div className="mx-4 mb-6">
       <div className="mt-12  border border-(--border-color) rounded-[0.875rem] container mx-auto max-w-md p-6">
         {/* This h1 is only for screen readers and to improve SEO optimization */}
         <h1 className="sr-only">Sign in or sign up</h1>
@@ -71,7 +71,7 @@ function SignInForm() {
               value={email}
               disabled={isLoggingIn || isSigningUp}
               onChange={handleEmailChange}
-              placeholder="Enter your email"
+              placeholder={`Enter ${signUp ? "" : "your "}email`}
               required={true}
               autoComplete="email"
               addedClasses="mb-4 w-full text-sm"
@@ -90,7 +90,7 @@ function SignInForm() {
               value={password}
               disabled={isLoggingIn || isSigningUp}
               onChange={handlePasswordChange}
-              placeholder="Enter your password"
+              placeholder={`Enter ${signUp ? "" : "your "}password`}
               required={true}
               autoComplete="current-password"
               addedClasses="mb-4 w-full text-sm"
@@ -106,14 +106,7 @@ function SignInForm() {
             </Button>
           </form>
 
-          <button
-            className="text-(--text-color) text-sm font-semibold cursor-pointer my-6 hover:underline"
-            aria-label="Reset your password"
-          >
-            Forgot your password?
-          </button>
-
-          <hr className="mb-4 border-t border-gray-300" />
+          <hr className="mt-6 mb-4 border-t border-gray-300" />
 
           <p className="mb-2 text-(--text-color-secondary) text-sm">
             {signUp ? "Already have an account?" : "Don't have an account?"}

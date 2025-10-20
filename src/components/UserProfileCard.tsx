@@ -45,6 +45,7 @@ function UserProfileCard({
           name={id}
           addedClasses="text-sm w-full"
           defaultValue={initialValue}
+          placeholder={placeHolder}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             handleChange(id, e.target.value)
           }

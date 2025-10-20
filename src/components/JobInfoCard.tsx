@@ -27,7 +27,20 @@ function JobInfoCard({
   const cssBgColor = `var(--${applicationStatus.toLowerCase()}-status-bg)`;
 
   // conditional return if we are in edit mode
-  if (isEditing)
+  if (isEditing) {
+    // Here we set a limit for the date input (one year before and after the current year for an application)
+    const today = new Date();
+
+    // Get the current year
+    const currentYear = today.getFullYear();
+
+    // Calculate min and max years (1 before and 1 after)
+    const minDate = new Date(currentYear - 1, 0, 1); // Jan 1 of 3 years ago
+    const maxDate = new Date(currentYear + 1, 11, 31); // Dec 31 of 3 years ahead
+
+    // Convert to yyyy-mm-dd format
+    const formatDate = (date: Date) => date.toISOString().split("T")[0];
+
     return (
       <fieldset className="custom-border">
         <div className="mb-8">
@@ -100,6 +113,8 @@ function JobInfoCard({
                 id="date-applied"
                 name="date-applied"
                 defaultValue={applicationDate}
+                min={formatDate(minDate)}
+                max={formatDate(maxDate)}
                 addedClasses="grow text-sm"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleChange("applicationDate", e.target.value)
@@ -132,6 +147,7 @@ function JobInfoCard({
         </div>
       </fieldset>
     );
+  }
 
   return (
     <section aria-labelledby="job-details" className="custom-border">

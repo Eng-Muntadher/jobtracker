@@ -106,6 +106,7 @@ function UserName({
             id="user-name"
             name="UserName"
             type="text"
+            placeholder="Full Name"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               handleChange("userName", e.target.value)
             }

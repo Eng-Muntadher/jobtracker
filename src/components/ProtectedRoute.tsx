@@ -7,7 +7,9 @@ interface Props {
 }
 
 function ProtectedRoute({ children }: Props) {
-  const { data: user } = useUser();
+  const { data: user, isPending } = useUser();
+
+  if (isPending) return null;
 
   if (!user) return <Navigate to="/" replace />;
 

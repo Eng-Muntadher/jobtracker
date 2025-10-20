@@ -13,6 +13,8 @@ interface InputProps {
   addedClasses?: string;
   srOnlyInfo?: string;
   autoComplete?: string;
+  min?: string;
+  max?: string;
 }
 
 function Input({
@@ -28,6 +30,8 @@ function Input({
   autoComplete,
   onChange,
   defaultValue,
+  min,
+  max,
 }: InputProps) {
   const styles =
     "bg-(--input-color) text-(--text-color) rounded-lg px-3 py-2 focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100";
@@ -53,6 +57,8 @@ function Input({
           name={name}
           value={value}
           defaultValue={defaultValue}
+          min={min}
+          max={max}
           onChange={onChange as React.ChangeEventHandler<HTMLInputElement>}
           disabled={disabled}
           placeholder={placeholder}

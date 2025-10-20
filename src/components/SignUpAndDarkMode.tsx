@@ -3,28 +3,48 @@ import { Link } from "react-router-dom";
 import { useUser } from "../hooks/useUser";
 import Button from "./Button";
 import guestImage from "../images/guest.jpeg";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 function SignUpAndDarkMode() {
   const { data: user } = useUser();
 
-  const [darkMode, setDarkMode] = useState(
-    () => localStorage.getItem("theme") === "dark"
-  );
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+  const [darkMode, setDarkMode] = useState(() => {
+    try {
+      const stored = localStorage.getItem("theme");
+      if (stored === "dark") return true;
+      if (stored === "light") return false;
+      return (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      );
+    } catch (e) {
+      console.log(e);
+      return false;
     }
-  }, [darkMode]);
+  });
 
   function toggleDarkMode() {
     setDarkMode((prev) => !prev);
   }
+
+  useLayoutEffect(() => {
+    const el = document.documentElement;
+    try {
+      if (darkMode) {
+        el.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        el.style.backgroundColor = "#000";
+        if (document.body) document.body.style.backgroundColor = "#000";
+      } else {
+        el.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        el.style.backgroundColor = "#ffffff";
+        if (document.body) document.body.style.backgroundColor = "#ffffff";
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }, [darkMode]);
 
   return (
     <div className="flex items-center justify-center">

@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- This is used to check for the theme before any component mounts for smoother a transition -->
+    <script>
+      (function () {
+        try {
+          const stored = localStorage.getItem("theme"); // "dark" | "light" | null
+          const prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const useDark = stored === "dark" || (!stored && prefersDark);
+
+          const LIGHT_BG = "#ffffff";
+          const DARK_BG = "#000";
+
+          if (useDark) {
+            document.documentElement.classList.add("dark");
+            document.documentElement.style.backgroundColor = DARK_BG;
+            if (document.body) document.body.style.backgroundColor = DARK_BG;
+          } else {
+            document.documentElement.classList.remove("dark");
+            document.documentElement.style.backgroundColor = LIGHT_BG;
+            if (document.body) document.body.style.backgroundColor = LIGHT_BG;
+          }
+        } catch (e) {
+          // ignore (privacy mode may throw on localStorage)
+          console.log(e);
+        }
+      })();
+    </script>
+
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Job Application Tracker</title>
+    <title>Job Tracker</title>
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="Job Application Tracker | Muntadher Ahmed" />
@@ -20,11 +49,11 @@
     <meta name="robots" content="index, follow" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://yourdomain.com" />
+    <link rel="canonical" href="https://jobtracker-99.vercel.app/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourdomain.com/" />
+    <meta property="og:url" content="https://jobtracker-99.vercel.app/" />
     <meta
       property="og:title"
       content="Job Application Tracker | Muntadher Ahmed"
@@ -33,11 +62,14 @@
       property="og:description"
       content="Track and manage your job applications effortlessly. View stats, add applications, and stay organized with Muntadher Ahmed's Job Application Tracker."
     />
-    <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+    <meta
+      property="og:image"
+      content="https://jobtracker-99.vercel.app/og-image.jpg"
+    />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://yourdomain.com/" />
+    <meta property="twitter:url" content="https://jobtracker-99.vercel.app/" />
     <meta
       property="twitter:title"
       content="Job Application Tracker | Muntadher Ahmed"
@@ -48,7 +80,7 @@
     />
     <meta
       property="twitter:image"
-      content="https://yourdomain.com/og-image.jpg"
+      content="https://jobtracker-99.vercel.app/og-image.jpg"
     />
 
     <!-- Favicons -->

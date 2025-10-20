@@ -51,6 +51,7 @@ function ContactInfo({
               id="phone"
               type="text"
               name="phone"
+              placeholder="Add phone number"
               addedClasses="text-sm w-full"
               defaultValue={phoneNumber}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -73,6 +74,7 @@ function ContactInfo({
               id="location"
               type="text"
               name="location"
+              placeholder="Add location"
               addedClasses="text-sm w-full"
               defaultValue={location}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

@@ -9,7 +9,7 @@ function Logo() {
       className="flex items-center cursor-pointer focus:outline-none focus:ring-3 focus:ring-(--text-color-secondary) transition-all ease-in duration-100"
     >
       <Briefcase size={32} className="mr-[8px] text-(--text-color)" />
-      <span className="text-xl font-semibold text-[var(--text-color)]">
+      <span className="text-xl  font-semibold text-[var(--text-color)] lg:block md:hidden sm:block">
         JobTracker
       </span>
     </Link>

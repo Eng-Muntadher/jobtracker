@@ -16,7 +16,7 @@ function NavLinks({ addedClasses }: { addedClasses?: string }) {
         addedClasses ? "Mobile navigation links" : "Desktop navigation links"
       }
       // aria-hidden={!addedClasses}
-      className={`grid grid-cols-[auto_auto_auto] gap-6 max-[370px]:gap-0 ${
+      className={`grid grid-cols-[auto_auto_auto] gap-6 max-[370px]:gap-0 min-lg:mr-15 max-lg:ml-7 max-md:ml-0 ${
         !addedClasses ? "max-md:hidden" : ""
       }`}
     >

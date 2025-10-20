@@ -32,6 +32,7 @@ function AboutMe({ aboutMeText, isEditing, handleChange }: AboutMePorps) {
           id="about-me"
           type="textarea"
           name="about-me"
+          placeholder="Write a brief bio about yourself..."
           defaultValue={aboutMeText}
           addedClasses="text-sm w-full min-h-[56px]"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
