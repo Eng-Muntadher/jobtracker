@@ -39,6 +39,15 @@ export async function signUp({ email, password }: LoginArguments) {
   if (error) {
     throw new Error(error.message);
   }
+
+  // Add the email to the "emails" table in Supabase
+  const { error: insertError } = await supabase
+    .from("emails")
+    .insert([{ email }])
+    .select();
+
+  if (insertError) throw new Error(insertError.message);
+
   return data;
 }
 
@@ -113,16 +122,17 @@ export async function uploadUserAvatar(
 }
 
 export async function checkEmailExists(email: string): Promise<boolean> {
-  // Try signing in with a random password (guaranteed to fail)
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password: "random-nonexistent-password",
-  });
+  const res = await fetch(
+    "https://ijgbxgdoqzoqjhgpvnna.supabase.co/functions/v1/quick-responder",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    }
+  );
 
-  // If the error is "Invalid login credentials", email exists
-  // If "User not found", email does not exist
-  if (error?.message.includes("Invalid login credentials")) return true;
-  if (error?.message.includes("User not found")) return false;
+  if (!res.ok) throw new Error("Failed to check email");
 
-  return false;
+  const data = await res.json();
+  return data.exists;
 }

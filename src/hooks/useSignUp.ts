@@ -22,7 +22,6 @@ export function useSignUp() {
       ),
     onError: (error) => {
       console.log(error);
-      toast.error("Something went wrong! Please try again later");
     },
   });
   return { signUp, isPending };
